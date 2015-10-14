@@ -16,13 +16,14 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Prism.Unity.Windows;
 
 namespace ExtendedSplashScreenDemo
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : PrismApplication
+    sealed partial class App : PrismUnityApplication
     {
         public App()
         {

@@ -134,6 +134,12 @@ publish/
 *.pubxml
 *.publishproj
 
+# NuGet
+.nuget/
+*.nuget.props
+*.nuget.targets
+*.lock.json
+
 # NuGet Packages
 *.nupkg
 # The packages folder can be ignored because of Package Restore
@@ -162,6 +168,9 @@ ClientBin/
 *.publishsettings
 node_modules/
 bower_components/
+
+# Allow demo temporary keys
+!*_TemporaryKey.pfx
 
 # RIA/Silverlight projects
 Generated_Code/
