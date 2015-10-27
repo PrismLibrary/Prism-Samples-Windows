@@ -1,0 +1,726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ErrorRequired" xml:space="preserve">
+    <value>This field is required</value>
+    <comment>Error message for when a field is required</comment>
+  </data>
+  <data name="ErrorInvalidSignInErrorMessage" xml:space="preserve">
+    <value>Invalid email or password</value>
+    <comment>Error for when the the user credentials are invalid</comment>
+  </data>
+  <data name="BillingAddress" xml:space="preserve">
+    <value>Billing Address</value>
+    <comment>Label for the Billing Address</comment>
+  </data>
+  <data name="SelectCheckoutData" xml:space="preserve">
+    <value>Select {0}</value>
+    <comment>Title of the Popup for selecting different checkout data</comment>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>Payment</value>
+    <comment>Text for Payment Method</comment>
+  </data>
+  <data name="ShippingAddress" xml:space="preserve">
+    <value>Shipping Address</value>
+    <comment>Text for Shipping Address</comment>
+  </data>
+  <data name="CardEndingIn" xml:space="preserve">
+    <value>Card Ending In: {0}</value>
+    <comment>Label for showing the credit card ending numbers</comment>
+  </data>
+  <data name="CardExpiringOn" xml:space="preserve">
+    <value>Card expiring on: {0}</value>
+    <comment>Label for showing the expiration date of the credit card</comment>
+  </data>
+  <data name="Address.Header" xml:space="preserve">
+    <value>Address*</value>
+    <comment>Label for Address</comment>
+  </data>
+  <data name="Address.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Address</value>
+    <comment>AutomationProperties' Name for Address</comment>
+  </data>
+  <data name="TitleArea.Text" xml:space="preserve">
+    <value>Area*</value>
+    <comment>Label for the Area controls in the Billing &amp; Shipping Addresses user controls</comment>
+  </data>
+  <data name="FirstName.Header" xml:space="preserve">
+    <value>First Name*</value>
+    <comment>Label for the First Name textbox in the Billing &amp; Shipping Addresses user controls</comment>
+  </data>
+  <data name="FirstName.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>First Name</value>
+    <comment>AutomationProperties' Name for FirstName</comment>
+  </data>
+  <data name="LastName.Header" xml:space="preserve">
+    <value>Last Name*</value>
+    <comment>Label for the Last Name textbox in the Billing &amp; Shipping Addresses user controls</comment>
+  </data>
+  <data name="LastName.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Last Name</value>
+    <comment>AutomationProperties' Name for LastName</comment>
+  </data>
+  <data name="MiddleInitial.Header" xml:space="preserve">
+    <value>Middle Initial</value>
+    <comment>Label for the Middle Initial textbox in the Billing &amp; Shipping Addresses user controls</comment>
+  </data>
+  <data name="MiddleInitial.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Middle Initial</value>
+    <comment>AutomationProperties' Name for MiddleInitial</comment>
+  </data>
+  <data name="OptionalAddress.Header" xml:space="preserve">
+    <value>Optional Address</value>
+    <comment>Label for the Optional Address textbox in the Billing &amp; Shipping Addresses user controls</comment>
+  </data>
+  <data name="OptionalAddress.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Optional Address</value>
+    <comment>AutomationProperties' Name for OptionalAddress</comment>
+  </data>
+  <data name="Phone.Header" xml:space="preserve">
+    <value>Phone*</value>
+    <comment>Label for the Phone textbox in the Billing &amp; Shipping Addresses user controls</comment>
+  </data>
+  <data name="Phone.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Phone</value>
+    <comment>AutomationProperties' Name for Phone</comment>
+  </data>
+  <data name="PaymentPhone.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Phone Number</value>
+    <comment>AutomationProperties' Name for PaymentPhone</comment>
+  </data>
+  <data name="CardholderName.Header" xml:space="preserve">
+    <value>Cardholder Name*</value>
+    <comment>Label for the Cardholder Name</comment>
+  </data>
+  <data name="CardholderName.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Card Holder Name</value>
+    <comment>AutomationProperties' Name for CardholderName</comment>
+  </data>
+  <data name="CardNumber.Header" xml:space="preserve">
+    <value>Card Number*</value>
+    <comment>Label for the Card Number</comment>
+  </data>
+  <data name="CardNumber.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Card Number</value>
+    <comment>AutomationProperties' Name for CardNumber</comment>
+  </data>
+  <data name="CardVerificationCode.Header" xml:space="preserve">
+    <value>CVC2*</value>
+    <comment>Label for the Card Verification Code</comment>
+  </data>
+  <data name="CardVerificationCode.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Card Verification Code</value>
+    <comment>AutomationProperties' Name for CardVerificationCode</comment>
+  </data>
+  <data name="TitleExpirationDate.Text" xml:space="preserve">
+    <value>Expiration Date*</value>
+    <comment>Label for the Expiration Date textbox in the Billing &amp; Shipping Addresses user controls</comment>
+  </data>
+  <data name="TitleExpirationDate.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Expiration Date</value>
+    <comment>AutomationProperties' Name for TitleExpirationDate</comment>
+  </data>
+  <data name="TitlePhoneNumber.Text" xml:space="preserve">
+    <value>Phone Number</value>
+    <comment>Label for the Phone Number textbox in the Payment Method user control</comment>
+  </data>
+  <data name="ErrorCardNumberInvalidLength" xml:space="preserve">
+    <value>Card number must contain between 4 and 20 characters</value>
+    <comment>Error message for when the credit card number has an invalid length</comment>
+  </data>
+  <data name="ErrorCardMonthInvalid" xml:space="preserve">
+    <value>Invalid expiration month</value>
+    <comment>Error for when the expiration month of the credit card is invalid</comment>
+  </data>
+  <data name="ErrorCardYearInvalid" xml:space="preserve">
+    <value>Invalid expiration year</value>
+    <comment>Error for when the credit card expiration year is invalid</comment>
+  </data>
+  <data name="ErrorRegex" xml:space="preserve">
+    <value>This field contains invalid characters</value>
+    <comment>Error message for when a field contain invalid characters</comment>
+  </data>
+  <data name="AddBillingAddressTitle" xml:space="preserve">
+    <value>Add Billing Address</value>
+    <comment>Title of the Add Billing Address Flyout</comment>
+  </data>
+  <data name="AddButton.Content" xml:space="preserve">
+    <value>Add</value>
+    <comment>Text of the Add button for increasing the quantity of the selected shopping cart item</comment>
+  </data>
+  <data name="AddPaymentMethodTitle" xml:space="preserve">
+    <value>Add Payment Method</value>
+    <comment>Title of the Add Payment Method Flyout</comment>
+  </data>
+  <data name="AddressAndPaymentLabel.Text" xml:space="preserve">
+    <value>Address &amp; Payment</value>
+    <comment>Address &amp; Payment header in the Checkout Summary header</comment>
+  </data>
+  <data name="AddShippingAddressTitle" xml:space="preserve">
+    <value>Add Shipping Address</value>
+    <comment>Title of the Add Shipping Address Flyout</comment>
+  </data>
+  <data name="AddToCartButton.Content" xml:space="preserve">
+    <value>Add to Cart</value>
+    <comment>Text for the add to cart button</comment>
+  </data>
+  <data name="BillingAddressLabel.Text" xml:space="preserve">
+    <value>Billing Address</value>
+    <comment>Label For the Billing Address</comment>
+  </data>
+  <data name="CartItemsLabel.Text" xml:space="preserve">
+    <value>Cart Items</value>
+    <comment>Label for the Shopping Cart Items</comment>
+  </data>
+  <data name="CartLabel.Text" xml:space="preserve">
+    <value>Cart:</value>
+    <comment>Label for the Shopping Cart Items</comment>
+  </data>
+  <data name="ChangeDefaultsTitle.Text" xml:space="preserve">
+    <value>Change Defaults</value>
+    <comment>Title of the Change Defaults Page</comment>
+  </data>
+  <data name="CheckoutButton.Content" xml:space="preserve">
+    <value>Checkout</value>
+    <comment>Text of the checkout button used for initiating the checkout process</comment>
+  </data>
+  <data name="CheckoutHubTitle.Text" xml:space="preserve">
+    <value>Enter Information</value>
+    <comment>Title of the Checkout Hub page</comment>
+  </data>
+  <data name="CheckoutSummaryTitle.Text" xml:space="preserve">
+    <value>Checkout Summary</value>
+    <comment>Title of the Checkout Summary Page</comment>
+  </data>
+  <data name="DiscountCodesLabel.Text" xml:space="preserve">
+    <value>Discount Codes:</value>
+    <comment>Label for the discount codes ammount on the shopping cart page</comment>
+  </data>
+  <data name="EditBillingAddressTitle" xml:space="preserve">
+    <value>Edit Billing Address</value>
+    <comment>Title for the Edit Billing Address flyout</comment>
+  </data>
+  <data name="EditPaymentMethodTitle" xml:space="preserve">
+    <value>Edit Payment Method</value>
+    <comment>Title for the Edit Payment Method flyout</comment>
+  </data>
+  <data name="EditShippingAddressTitle" xml:space="preserve">
+    <value>Edit Shipping Address</value>
+    <comment>Title for the Edit Shipping Address flyout</comment>
+  </data>
+  <data name="Username.Header" xml:space="preserve">
+    <value>Username</value>
+    <comment>Label for the username textbox in the login screen</comment>
+  </data>
+  <data name="Username.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Username</value>
+    <comment>AutomationProperties' Name for Username</comment>
+  </data>
+  <data name="GrandTotalLabel.Text" xml:space="preserve">
+    <value>Grand Total:</value>
+    <comment>Label for the Total amount of the order</comment>
+  </data>
+  <data name="ItemsLabel.Text" xml:space="preserve">
+    <value>Items</value>
+    <comment>Label for Items in the shopping cart page</comment>
+  </data>
+  <data name="LoginTitle.Text" xml:space="preserve">
+    <value>Login</value>
+    <comment>Title of the Login Flyout</comment>
+  </data>
+  <data name="LogoutButton.Content" xml:space="preserve">
+    <value>Logout</value>
+    <comment>Text for the logout button of the Logout flyout</comment>
+  </data>
+  <data name="LogoutTitle.Text" xml:space="preserve">
+    <value>Logout</value>
+    <comment>Title of the Logout Flyout</comment>
+  </data>
+  <data name="NextButton.Content" xml:space="preserve">
+    <value>Next</value>
+    <comment>Text of the next button</comment>
+  </data>
+  <data name="OrderSubtotalLabel.Text" xml:space="preserve">
+    <value>Order Subtotal:</value>
+    <comment>Label for the Subtotal of the Order</comment>
+  </data>
+  <data name="OverviewLabel.Text" xml:space="preserve">
+    <value>Overview</value>
+    <comment>Label for the Overview of the Order</comment>
+  </data>
+  <data name="PasswordBox.Header" xml:space="preserve">
+    <value>Password</value>
+    <comment>Label for the Password box of the Login Flyout</comment>
+  </data>
+  <data name="PasswordBox.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Password</value>
+    <comment>AutomationProperties' Name for PasswordBox</comment>
+  </data>
+  <data name="PaymentMethodLabel.Text" xml:space="preserve">
+    <value>Payment Method</value>
+    <comment>Label for the Payment Method section of the Checkout Summary Page</comment>
+  </data>
+  <data name="SaveButton.Content" xml:space="preserve">
+    <value>Save</value>
+    <comment>Text of the Save button</comment>
+  </data>
+  <data name="SaveCredentialsLabel.Content" xml:space="preserve">
+    <value>Save Credentials?</value>
+    <comment>Text for the checkbox that allows you to save the user credentials</comment>
+  </data>
+  <data name="SelectShippingPlanLabel.Text" xml:space="preserve">
+    <value>Select Shipping Plan</value>
+    <comment>Label for selecting the shipping plan of the order</comment>
+  </data>
+  <data name="ShippingAddressLabel.Text" xml:space="preserve">
+    <value>Shipping Address</value>
+    <comment>Label for the Shipping Address item</comment>
+  </data>
+  <data name="ShippingLabel.Text" xml:space="preserve">
+    <value>Shipping:</value>
+    <comment>Label for the shipping cost of the order</comment>
+  </data>
+  <data name="ShoppingCartTitle.Text" xml:space="preserve">
+    <value>Shopping Cart</value>
+    <comment>Title of the Shopping Cart Page</comment>
+  </data>
+  <data name="SubmitButton.Content" xml:space="preserve">
+    <value>Submit</value>
+    <comment>Text for the Submit button for completing an order</comment>
+  </data>
+  <data name="TaxLabel.Text" xml:space="preserve">
+    <value>Tax:</value>
+    <comment>Label for Tax </comment>
+  </data>
+  <data name="TotalItemsLabel.Text" xml:space="preserve">
+    <value>Total Items:</value>
+    <comment>Label for the total items in the checkout summary page</comment>
+  </data>
+  <data name="TotalLabel.Text" xml:space="preserve">
+    <value>Total:</value>
+    <comment>Label for totals in the shopping cart and checkout summary</comment>
+  </data>
+  <data name="YoureCurrentlySignedInAsLabel.Text" xml:space="preserve">
+    <value>You're currently signed in as:</value>
+    <comment>Label for the message that shows the current logged user</comment>
+  </data>
+  <data name="BillingAddressIncompleteMessage.Text" xml:space="preserve">
+    <value>Billing address incomplete</value>
+    <comment>Error displayed when there are validation errors in the billing address</comment>
+  </data>
+  <data name="PaymentMethodIncompleteMessage.Text" xml:space="preserve">
+    <value>Payment method incomplete</value>
+    <comment>Message for when the Paymenth method contains validation errors</comment>
+  </data>
+  <data name="ShippingAddressIncompleteMessage.Text" xml:space="preserve">
+    <value>Shipping address incomplete</value>
+    <comment>Error displayed when there are validation errors in the shipping address</comment>
+  </data>
+  <data name="ErrorProcessingOrder" xml:space="preserve">
+    <value>There was an error processing your order.</value>
+    <comment>Error message for when there was an error processing the order</comment>
+  </data>
+  <data name="GeneralServiceErrorMessage" xml:space="preserve">
+    <value>The following error messages were received from the service: {0} {1}</value>
+    <comment>Message for general service errors</comment>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+    <comment>Text for Error</comment>
+  </data>
+  <data name="ErrorServiceUnreachable" xml:space="preserve">
+    <value>Service is unreachable.</value>
+    <comment>Error message for when the service is unreachable</comment>
+  </data>
+  <data name="HomeAppBarButton.Content" xml:space="preserve">
+    <value>Home</value>
+    <comment>Label for the Home Button of the AppBar</comment>
+  </data>
+  <data name="ShoppingCartAppBarButton.Content" xml:space="preserve">
+    <value>Shopping Cart</value>
+    <comment>Caption for the Shopping Cart button of the </comment>
+  </data>
+  <data name="City.PlaceholderText" xml:space="preserve">
+    <value>City</value>
+    <comment>Watermark for the City input box</comment>
+  </data>
+  <data name="EditAmountAppBarButton.Label" xml:space="preserve">
+    <value>Edit amount</value>
+    <comment>Caption for the Edit Amount button on the Shopping Cart page</comment>
+  </data>
+  <data name="ExpirationMonth.PlaceholderText" xml:space="preserve">
+    <value>Month (1 - 12)</value>
+    <comment>Watermark for the expiration month of the credit card</comment>
+  </data>
+  <data name="ExpirationYear.PlaceholderText" xml:space="preserve">
+    <value>Year</value>
+    <comment>Watermark for the expiration year of the credit card</comment>
+  </data>
+  <data name="PostalCodeTextBox.PlaceholderText" xml:space="preserve">
+    <value>Zip code</value>
+    <comment>Watermark text of the zip code input box</comment>
+  </data>
+  <data name="RemoveAppBarButton.Label" xml:space="preserve">
+    <value>Remove item</value>
+    <comment>Caption for the Remove Item of the shopping cart page</comment>
+  </data>
+  <data name="SetAsDefaultCheckbox.Content" xml:space="preserve">
+    <value>Set as default</value>
+    <comment>Text for the Set as Default checkbox</comment>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+    <comment>Text for State</comment>
+  </data>
+  <data name="PleaseSignInTextBlock.Text" xml:space="preserve">
+    <value>Please sign in. Valid usernames are 'user' and 'JohnDoe'. Valid password is 'pwd'.</value>
+    <comment>Message for the sign in flyout specifying the valid user names</comment>
+  </data>
+  <data name="ShoppingCartItemsGridView.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Shopping Cart Items</value>
+    <comment>Automation Properties' Name for the Shopping Cart GridView</comment>
+  </data>
+  <data name="DialogOkButtonLabel" xml:space="preserve">
+    <value>OK</value>
+    <comment>Caption for the OK button of the Dialog messages</comment>
+  </data>
+  <data name="OrderPurchasedTitle" xml:space="preserve">
+    <value>Order purchased</value>
+    <comment>Title for the Order Purchased confirmation dialog</comment>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>QTY</value>
+    <comment>Label for quantity in a shopping cart product item</comment>
+  </data>
+  <data name="SelectCheckoutDataAppBarButton.Label" xml:space="preserve">
+    <value>Select</value>
+    <comment>Automation Properties' Name for Selecting different checkout data</comment>
+  </data>
+  <data name="City.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>City</value>
+    <comment>AutomationProperties' Name for City</comment>
+  </data>
+  <data name="ExpirationMonth.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Expiration month</value>
+    <comment>Automation Properties' Name for the expiration month of the credit card</comment>
+  </data>
+  <data name="ExpirationYear.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Expiration year</value>
+    <comment>Automation Properties' Name for the expiration year of the credit card</comment>
+  </data>
+  <data name="PostalCodeTextBox.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Zip code</value>
+    <comment>Automation Properties' Name for the Zip code</comment>
+  </data>
+  <data name="StateComboBox.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>State</value>
+    <comment>Automation Properties' Name for the State ComboBox</comment>
+  </data>
+  <data name="SelectedProductImage.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Selected product image</value>
+    <comment>Automation Properties' Name for the selected product image</comment>
+  </data>
+  <data name="DetailsLabel.Text" xml:space="preserve">
+    <value>Details</value>
+    <comment>Label for the Details section of the Item Details Page</comment>
+  </data>
+  <data name="InventoryStatusLabel.Text" xml:space="preserve">
+    <value>Inventory Status</value>
+    <comment>Label for the Inventory status of the Item Details page</comment>
+  </data>
+  <data name="ReviewsLabel.Text" xml:space="preserve">
+    <value>12 Reviews:</value>
+    <comment>Reviews label for the product information</comment>
+  </data>
+  <data name="SalePriceLabel.Text" xml:space="preserve">
+    <value>Sale Price</value>
+    <comment>Sale Price label for the product information</comment>
+  </data>
+  <data name="SameAsShippingAddressCheckBox.Content" xml:space="preserve">
+    <value>Same as Shipping Address</value>
+    <comment>Text for the checkbox for using the shipping address as billing address</comment>
+  </data>
+  <data name="AddCheckoutData.Content" xml:space="preserve">
+    <value>Enter new data</value>
+    <comment>Label for entering new data (shipping address, billing address, paymeny information) in the Checkout Summary Page</comment>
+  </data>
+  <data name="ShoppingCartButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Shopping Cart</value>
+    <comment>Automation Properties' Name for the Shopping Cart button</comment>
+  </data>
+  <data name="TopAppBar.FlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>FlowDirection property of the Top AppBar for supporting RTL languages. Do not translate!</comment>
+  </data>
+  <data name="Page.FlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>FlowDirection property of the Pages for supporting RTL languages. Do not translate!</comment>
+  </data>
+  <data name="NoSearchResultsLabel.Text" xml:space="preserve">
+    <value>No products match your search.</value>
+    <comment>Message for when a search returns no results</comment>
+  </data>
+  <data name="ResultsForLabel.Text" xml:space="preserve">
+    <value>Results for</value>
+    <comment>Label for the "Results for" text on the Search page</comment>
+  </data>
+  <data name="SearchPageTitle.Text" xml:space="preserve">
+    <value>Search</value>
+    <comment>Title of the Search Page</comment>
+  </data>
+  <data name="SearchBoxUserControl.PlaceholderText" xml:space="preserve">
+    <value>Search for a Product</value>
+    <comment>PlaceHolder Text for the Search Pane's input box</comment>
+  </data>
+  <data name="ChangeDefaults" xml:space="preserve">
+    <value>Change Defaults</value>
+    <comment>Label for the Change Defaults item of the settings charm</comment>
+  </data>
+  <data name="DecrementQuantityButton.Label" xml:space="preserve">
+    <value>Remove</value>
+    <comment>Caption for the Decrement Quantity button of the Shopping Cart Page</comment>
+  </data>
+  <data name="EditCheckoutDataAppBarButton.Label" xml:space="preserve">
+    <value>Edit</value>
+    <comment>Caption for the Edit Checkout data button</comment>
+  </data>
+  <data name="IncrementQuantityButton.Label" xml:space="preserve">
+    <value>Add</value>
+    <comment>Label for the Increment Quantity button in the Shopping Cart page</comment>
+  </data>
+  <data name="PinAppBarButton.Label" xml:space="preserve">
+    <value>Pin To Start</value>
+    <comment>Label for the Pin Button of the AppBar</comment>
+  </data>
+  <data name="UnpinAppBarButton.Label" xml:space="preserve">
+    <value>Unpin from Start</value>
+    <comment>Label for the Unpin Button of the AppBar</comment>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+    <comment>Text for the privacy policy item in the settings charm</comment>
+  </data>
+  <data name="PrivacyPolicyUrl" xml:space="preserve">
+    <value>http://konaguidance.codeplex.com/wikipage?title=Sample%20Privacy%20Policy%20Page</value>
+    <comment>URL for the privacy policy</comment>
+  </data>
+  <data name="SearchButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Search</value>
+    <comment>AutomationProperties.Name for Search</comment>
+  </data>
+  <data name="ZipCodeLengthInvalidErrorMessage" xml:space="preserve">
+    <value>Invalid Zip Code length. Try Washington (State) and 98052 (Zip Code).</value>
+    <comment>Error message for when the zip code has an invalid length</comment>
+  </data>
+  <data name="EditQuantityLabel.Text" xml:space="preserve">
+    <value>Edit Quantity</value>
+    <comment>Title for the Edit Quantity Popup</comment>
+  </data>
+  <data name="ProductInformationTitle.Text" xml:space="preserve">
+    <value>Product Details</value>
+    <comment>Title for the Item Details Page</comment>
+  </data>
+  <data name="BottomAppBar.FlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>FlowDirection property of the Bottom AppBar for supporting RTL languages. Do not translate!</comment>
+  </data>
+  <data name="NoDefaultBillingAddressLabel.Text" xml:space="preserve">
+    <value>No default Billing Address is selected.</value>
+    <comment>Message for when there is no default billing address selected</comment>
+  </data>
+  <data name="NoDefaultPaymentMethodLabel.Text" xml:space="preserve">
+    <value>No default Payment Method is selected.</value>
+    <comment>Message for when there is no default payment method</comment>
+  </data>
+  <data name="NoDefaultShippingAddressLabel.Text" xml:space="preserve">
+    <value>No default Shipping Address is selected.</value>
+    <comment>Message for when there is no default billing address selected</comment>
+  </data>
+  <data name="LoginText" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LogoutText" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="ExpandBillingAddressButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Billing address</value>
+    <comment>Label for the Billing address button in the Change Defaults flyout</comment>
+  </data>
+  <data name="ExpandPaymentMethodButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Payment method</value>
+    <comment>Label for the Payment method button in the Change Defaults flyout</comment>
+  </data>
+  <data name="ExpandShippingAddressButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Shipping address</value>
+    <comment>Label for the Shipping address button in the Change Defaults flyout</comment>
+  </data>
+  <data name="ContinueShoppingButton.Content" xml:space="preserve">
+    <value>Continue Shopping</value>
+    <comment>Text for the Continue Shopping button for on the Order Confirmation page</comment>
+  </data>
+  <data name="ItemsPurchasedLabel.Text" xml:space="preserve">
+    <value>Items Purchased</value>
+    <comment>Label for the Items Purchased column on the Orders Confirmation page</comment>
+  </data>
+  <data name="OrderConfirmationTitle.Text" xml:space="preserve">
+    <value>Order Confirmation</value>
+    <comment>Label for the Order Confirmation page</comment>
+  </data>
+  <data name="ShippingPlanLabel.Text" xml:space="preserve">
+    <value>Shipping Plan</value>
+    <comment>Label for shipping plan on the Order Confirmation page</comment>
+  </data>
+  <data name="OrderConfirmationContent" xml:space="preserve">
+    <value>Your order confirmation number is: {0}.</value>
+    <comment>Text for order confirmation message including confirmation number</comment>
+  </data>
+  <data name="ZipCodeRegexErrorMessage" xml:space="preserve">
+    <value>This field contains invalid characters. Try Washington (State) and 98052 (Zip Code).</value>
+    <comment>Error message for when the zip code does not match regex.</comment>
+  </data>
+  <data name="SignInCancelButton.Content" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Text for the Cancel button of the Login modal dialog</comment>
+  </data>
+  <data name="BottomAppBar.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Bottom App Bar</value>
+    <comment>Message to be read by Narrator tool</comment>
+  </data>
+  <data name="TopAppBar.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Top App Bar</value>
+    <comment>Message to be read by Narrator tool</comment>
+  </data>
+  <data name="SignInTextBlock.Text" xml:space="preserve">
+    <value>Sign in to the app</value>
+    <comment>Label for Sign In pop up textblock.</comment>
+  </data>
+  <data name="HelpUrl" xml:space="preserve">
+    <value>http://go.microsoft.com/fwlink/?LinkID=288811&amp;clcid=0x409</value>
+    <comment>URL for help on using this guidance.</comment>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+    <comment>Text for the help item in the settings charm</comment>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
+    <comment>Text used in the separator of the Search Results Suggestions.</comment>
+  </data>
+</root>

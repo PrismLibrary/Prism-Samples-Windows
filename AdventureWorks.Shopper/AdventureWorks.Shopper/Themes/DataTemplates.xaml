@@ -1,0 +1,519 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+                    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity">
+
+    <!--  Item Panel Templates  -->
+    <ItemsPanelTemplate x:Key="VerticalStackPanelItemTemplate">
+        <StackPanel Orientation="Vertical" />
+    </ItemsPanelTemplate>
+
+
+    <DataTemplate x:Key="AWShopperItemTemplate">
+        <Border BorderBrush="{StaticResource AwShopperItemBorderBrush}" BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <Image HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       AutomationProperties.Name="{Binding Title}"
+                       Source="{Binding Image}"
+                       Stretch="UniformToFill" />
+                <StackPanel Grid.Row="1"
+                            Height="100"
+                            VerticalAlignment="Bottom"
+                            Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
+                    <TextBlock Margin="15,0,15,0"
+                               FontSize="26"
+                               FontWeight="ExtraBold"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Text="{Binding SalePrice}" />
+                    <TextBlock Margin="15,0,15,0"
+                               Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}"
+                               Style="{StaticResource TitleTextStyle}"
+                               Text="{Binding Title}"
+                               TextWrapping="NoWrap" />
+                    <TextBlock Margin="15,0,15,10"
+                               Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}"
+                               Style="{StaticResource CaptionTextStyle}"
+                               Text="{Binding Description}"
+                               TextWrapping="NoWrap" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="AWShopperItemTemplateSemanticZoom">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+            <Image Source="{Binding Group.Image}" Stretch="UniformToFill" />
+            <StackPanel Grid.Row="1"
+                        Height="100"
+                        Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
+                <TextBlock Margin="10"
+                           FontSize="26"
+                           FontWeight="ExtraBold"
+                           Text="{Binding Group.Title}"
+                           TextTrimming="WordEllipsis" />
+                <StackPanel Margin="10,0,10,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="20" Text="{Binding Group.TotalNumberOfItems}" />
+                    <TextBlock Margin="10,0,10,0"
+                               HorizontalAlignment="Center"
+                               FontSize="20"
+                               Text="Products" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ShoppingCartItemTemplate">
+        <Border BorderBrush="{StaticResource AwShopperItemBorderBrush}" BorderThickness="1">
+            <Grid Height="165"
+                  MinWidth="355"
+                  Margin="0"
+                  Background="{StaticResource AwShopperItemBackgroundBrush}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="134" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0"
+                       Width="114"
+                       Height="114"
+                       Margin="10"
+                       Source="{Binding Image}" />
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45" />
+                        <RowDefinition />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Grid.ColumnSpan="2"
+                               Margin="3"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Text="{Binding Title}"
+                               TextWrapping="Wrap" />
+                    <TextBlock Grid.Row="1"
+                               Grid.ColumnSpan="2"
+                               Margin="3"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Text="{Binding Description}"
+                               TextTrimming="WordEllipsis"
+                               TextWrapping="Wrap" />
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Margin="3"
+                                   VerticalAlignment="Bottom"
+                                   FontSize="22"
+                                   Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                                   Text="{Binding DiscountedPrice}" />
+                        <Grid Grid.Column="1"
+                              Height="25"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Bottom">
+                            <Line HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Stretch="Fill"
+                                  Stroke="{StaticResource AwShopperItemDiscountLine}"
+                                  StrokeThickness="2"
+                                  X1="1" />
+                            <TextBlock Margin="3"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom"
+                                       FontSize="14"
+                                       Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                                       Text="{Binding FullPrice}" />
+                        </Grid>
+                    </Grid>
+                    <Border Grid.Row="2"
+                            Grid.Column="1"
+                            Width="50"
+                            Height="50"
+                            Background="{StaticResource AWShopperItemDarkerBackgroundBrush}"
+                            CornerRadius="50">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Uid="Quantity"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom"
+                                       Foreground="White"
+                                       Text="QTY" />
+                            <TextBlock Grid.Row="1"
+                                       Margin="0,-5,0,0"
+                                       HorizontalAlignment="Center"
+                                       FontSize="22"
+                                       Foreground="{StaticResource AWShopperItemSelectionColor}"
+                                       Text="{Binding Quantity}" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ShoppingCartItemTemplateMinimal">
+        <Border BorderBrush="{StaticResource AwShopperItemBorderBrush}" BorderThickness="1">
+            <Grid Width="270"
+                  Height="150"
+                  Background="{StaticResource AwShopperItemBackgroundBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0"
+                       Width="60"
+                       Height="60"
+                       Margin="5"
+                       Source="{Binding Image}" />
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45" />
+                        <RowDefinition />
+                        <RowDefinition Height="45" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Grid.ColumnSpan="2"
+                               Margin="3"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Text="{Binding Title}"
+                               TextWrapping="Wrap" />
+                    <TextBlock Grid.Row="1"
+                               Grid.ColumnSpan="2"
+                               Margin="3"
+                               FontSize="14"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Text="{Binding Description}"
+                               TextTrimming="WordEllipsis"
+                               TextWrapping="Wrap" />
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Margin="3"
+                                   VerticalAlignment="Bottom"
+                                   FontSize="20"
+                                   Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                                   Text="{Binding DiscountedPrice}" />
+                        <Grid Grid.Column="1"
+                              Height="25"
+                              VerticalAlignment="Bottom">
+                            <Line HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Stretch="Fill"
+                                  Stroke="{StaticResource AwShopperItemDiscountLine}"
+                                  StrokeThickness="2"
+                                  X1="1" />
+                            <TextBlock Margin="3"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom"
+                                       FontSize="12"
+                                       Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                                       Text="{Binding FullPrice}" />
+                        </Grid>
+                    </Grid>
+                    <Border Grid.Row="2"
+                            Grid.Column="1"
+                            Width="40"
+                            Height="40"
+                            Background="{StaticResource AWShopperItemDarkerBackgroundBrush}"
+                            CornerRadius="40">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Uid="Quantity"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="White"
+                                       Text="QTY" />
+                            <TextBlock Grid.Row="1"
+                                       Margin="0,-5,0,0"
+                                       HorizontalAlignment="Center"
+                                       FontSize="16"
+                                       Foreground="{StaticResource AWShopperItemSelectionColor}"
+                                       Text="{Binding Quantity}" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ShippingMethodTemplate">
+        <Border BorderBrush="{StaticResource AwShopperItemBorderBrush}" BorderThickness="1">
+            <Grid Height="80"
+                  MinWidth="200"
+                  AutomationProperties.Name="ShippingMethodMainGrid"
+                  Background="{StaticResource AwShopperItemBackgroundBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="90" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Margin="5,0"
+                           FontSize="26"
+                           Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                           Text="{Binding Description}" />
+                <TextBlock Grid.Row="1"
+                           Margin="5,15,5,5"
+                           Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                           Text="{Binding EstimatedTime}"
+                           TextWrapping="Wrap" />
+                <TextBlock Grid.Row="0"
+                           Grid.RowSpan="2"
+                           Grid.Column="1"
+                           Margin="3"
+                           FontSize="26"
+                           Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                           Text="{Binding Cost}"
+                           TextWrapping="Wrap" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ShippingMethodTemplateMinimal">
+        <Border BorderBrush="{StaticResource AwShopperItemBorderBrush}" BorderThickness="1">
+            <Grid Height="80"
+                  MinWidth="200"
+                  AutomationProperties.Name="ShippingMethodMainGrid"
+                  Background="{StaticResource AwShopperItemBackgroundBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="90" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Margin="5,0"
+                           FontSize="20"
+                           Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                           Text="{Binding Description}" />
+                <TextBlock Grid.Row="1"
+                           Margin="5,15,5,5"
+                           Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                           Text="{Binding EstimatedTime}"
+                           TextWrapping="Wrap" />
+                <TextBlock Grid.Row="0"
+                           Grid.RowSpan="2"
+                           Grid.Column="1"
+                           Margin="3"
+                           FontSize="20"
+                           Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                           Text="{Binding Cost}"
+                           TextWrapping="Wrap" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="CheckoutDataTemplate">
+        <Border BorderBrush="{StaticResource AwShopperItemBorderBrush}" BorderThickness="1">
+            <Grid Height="130"
+                  MinWidth="270"
+                  Background="{StaticResource AwShopperItemBackgroundBrush}">
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Margin="5,0"
+                               FontSize="26"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Text="{Binding Title}"
+                               TextTrimming="WordEllipsis" />
+                    <TextBlock Grid.Row="1"
+                               Margin="5,0"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Text="{Binding FirstLine,
+                                              Mode=TwoWay}" />
+                    <TextBlock Grid.Row="2"
+                               Margin="5,0"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Text="{Binding SecondLine,
+                                              Mode=TwoWay}" />
+                    <TextBlock Grid.Row="3"
+                               Margin="5,20,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Text="{Binding BottomLine,
+                                              Mode=TwoWay}" />
+                    <Image Grid.Row="3"
+                           Grid.Column="1"
+                           Margin="0,10,15,0"
+                           VerticalAlignment="Center"
+                           Source="{Binding LogoUri}" />
+                </Grid>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SmallCheckoutDataTemplate">
+        <Border BorderBrush="{StaticResource AwShopperItemBorderBrush}" BorderThickness="1">
+            <Grid Width="390"
+                  Height="50"
+                  Background="{StaticResource AwShopperItemBackgroundBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                           Margin="10,5,0,0"
+                           Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                           Text="{Binding FirstLine}" />
+                <TextBlock Grid.Row="1"
+                           Margin="10,0,0,0"
+                           Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                           Text="{Binding SecondLine}" />
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="CheckoutDataFlyoutTemplate">
+        <Border MinWidth="220"
+                BorderBrush="{StaticResource AwShopperItemBorderBrush}"
+                BorderThickness="1">
+            <StackPanel Margin="10">
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding FirstLine}" />
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding SecondLine}" />
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding BottomLine}" />
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ProductTemplate">
+        <Grid MinWidth="420">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Width="150"
+                    Height="100"
+                    Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}"
+                    BorderBrush="White"
+                    BorderThickness="2">
+                <Image Source="{Binding Image}" Stretch="UniformToFill">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:IncrementalUpdateBehavior Phase="2" />
+                    </Interactivity:Interaction.Behaviors>
+                </Image>
+            </Border>
+            <StackPanel Grid.Column="1"
+                        Margin="10,-10,0,0"
+                        HorizontalAlignment="Stretch">
+                <TextBlock Height="Auto"
+                           MaxHeight="80"
+                           Margin="5"
+                           FontSize="25"
+                           Text="{Binding Title}"
+                           TextTrimming="WordEllipsis"
+                           TextWrapping="Wrap">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:IncrementalUpdateBehavior Phase="1" />
+                    </Interactivity:Interaction.Behaviors>
+                </TextBlock>
+                <TextBlock Margin="5"
+                           FontSize="32"
+                           FontWeight="ExtraBold"
+                           Style="{StaticResource BodyTextStyle}"
+                           Text="{Binding SalePrice}">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:IncrementalUpdateBehavior Phase="2" />
+                    </Interactivity:Interaction.Behaviors>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="ProductTemplateMinimal">
+        <Grid Height="90"
+              Margin="6,0"
+              HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Width="80"
+                    Height="55"
+                    Margin="0,10"
+                    Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}"
+                    BorderBrush="White"
+                    BorderThickness="2">
+                <Image Source="{Binding Image}" Stretch="UniformToFill">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:IncrementalUpdateBehavior Phase="2" />
+                    </Interactivity:Interaction.Behaviors>
+                </Image>
+            </Border>
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <TextBlock Height="Auto"
+                           MaxHeight="60"
+                           Margin="5"
+                           FontSize="20"
+                           Text="{Binding Title}"
+                           TextTrimming="WordEllipsis"
+                           TextWrapping="Wrap">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:IncrementalUpdateBehavior Phase="1" />
+                    </Interactivity:Interaction.Behaviors>
+                </TextBlock>
+                <TextBlock Margin="5"
+                           FontSize="25"
+                           FontWeight="ExtraBold"
+                           LineHeight="20"
+                           LineStackingStrategy="BlockLineHeight"
+                           Text="{Binding SalePrice}"
+                           TextTrimming="CharacterEllipsis"
+                           TextWrapping="Wrap">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform X="-1" Y="4" />
+                    </TextBlock.RenderTransform>
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:IncrementalUpdateBehavior Phase="2" />
+                    </Interactivity:Interaction.Behaviors>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

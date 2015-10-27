@@ -1,0 +1,716 @@
+<local:NavigationAwarePage x:Class="AdventureWorks.Shopper.Views.ShoppingCartPage"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:Views="using:AdventureWorks.Shopper.Views"
+                           xmlns:awcontrols="using:AdventureWorks.Shopper.Controls"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:designViewModels="using:AdventureWorks.Shopper.DesignViewModels"
+                           xmlns:local="using:AdventureWorks.Shopper.Views"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+                           xmlns:triggers="using:AdventureWorks.Shopper.Triggers"
+                           x:Uid="Page"
+                           x:Name="pageRoot"
+                           IsTabStop="false"
+                           d:DataContext="{d:DesignInstance designViewModels:ShoppingCartPageDesignViewModel,
+                                                            IsDesignTimeCreatable=True}"
+                           prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+                           mc:Ignorable="d">
+    <!--<Page.TopAppBar>
+        <AppBar Style="{StaticResource AppBarStyle}"
+                x:Uid="TopAppBar">
+            <Views:TopAppBarUserControl />
+        </AppBar>
+    </Page.TopAppBar>-->
+
+    <Grid x:Name="grid1" Style="{StaticResource LayoutRootStyle}">
+        <VisualStateManager.VisualStateGroups>
+            <!--  Visual states reflect the application's view state  -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="DefaultLayout">
+                    <VisualState.StateTriggers>
+                        <triggers:LayoutTrigger LayoutState="Landscape" />
+                    </VisualState.StateTriggers>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="content" Storyboard.TargetProperty="Grid.ColumnDefinitions[0].MaxWidth">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="320" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="PortraitLayout">
+                    <VisualState.StateTriggers>
+                        <triggers:LayoutTrigger LayoutState="Portrait" />
+                    </VisualState.StateTriggers>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="content" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>20,5,25,15</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>NaN</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverviewLabel" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>40,0,0,10</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItemsLabel" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>40,20,10,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(Grid.Column)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>0</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(Grid.RowSpan)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>1</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock2"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="16"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock3"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="16"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock4"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="21.333"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock5"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="21.333"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock6"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="21.333"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock7"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="21.333"
+                                         d:IsOptimized="True" />
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="content" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>1</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItemsLabel" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>2</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItemsLabel" Storyboard.TargetProperty="(Grid.Column)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>0</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="content" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>NaN</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverviewPanel" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>1</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverviewPanel" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>40,0,0,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(FrameworkElement.HorizontalAlignment)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <HorizontalAlignment>Stretch</HorizontalAlignment>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="content" Storyboard.TargetProperty="(FrameworkElement.HorizontalAlignment)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <HorizontalAlignment>Stretch</HorizontalAlignment>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckoutButton" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>20,0,25,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>40,0,10,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>NaN</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(Control.FontFamily)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <FontFamily>Global User Interface</FontFamily>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>3</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(Control.Padding)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>0,0,0,10</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollContainer" Storyboard.TargetProperty="(ScrollViewer.VerticalScrollBarVisibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <ScrollBarVisibility>Auto</ScrollBarVisibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollContainer" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource VerticalScrollViewerStyle}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollContainer" Storyboard.TargetProperty="(ScrollViewer.HorizontalScrollBarVisibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <ScrollBarVisibility>Disabled</ScrollBarVisibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="MinimalLayout">
+                    <VisualState.StateTriggers>
+                        <triggers:LayoutTrigger LayoutState="Minimal" />
+                    </VisualState.StateTriggers>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MinimalBackButtonStyle}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MinimalPageHeaderTextStyle}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="content" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>20,5,25,15</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>NaN</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverviewLabel" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>20,0,0,10</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItemsLabel" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>20,20,0,10</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(Grid.Column)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>0</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(Grid.RowSpan)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>1</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock2"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="16"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock3"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="16"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock4"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="21.333"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock5"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="21.333"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock6"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="21.333"
+                                         d:IsOptimized="True" />
+                        <DoubleAnimation Duration="0"
+                                         Storyboard.TargetName="textBlock7"
+                                         Storyboard.TargetProperty="(TextBlock.FontSize)"
+                                         To="21.333"
+                                         d:IsOptimized="True" />
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="content" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>1</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItemsLabel" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>2</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ItemsLabel" Storyboard.TargetProperty="(Grid.Column)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>0</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="content" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>NaN</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverviewPanel" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>1</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverviewPanel" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="content" Storyboard.TargetProperty="(FrameworkElement.HorizontalAlignment)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <HorizontalAlignment>Stretch</HorizontalAlignment>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollContainer" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource VerticalScrollViewerStyle}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckoutButton" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>20,0,25,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>15,0,0,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ShoppingCartItemsGridView" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>3</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollContainer" Storyboard.TargetProperty="(ScrollViewer.HorizontalScrollBarVisibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <ScrollBarVisibility>Disabled</ScrollBarVisibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollContainer" Storyboard.TargetProperty="(ScrollViewer.VerticalScrollBarVisibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <ScrollBarVisibility>Auto</ScrollBarVisibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <AppBarButton x:Name="backButton"
+                          Command="{Binding GoBackCommand,
+                                            ElementName=pageRoot}"
+                          Style="{StaticResource BackButtonStyle}" />
+            <TextBlock x:Uid="ShoppingCartTitle"
+                       x:Name="pageTitle"
+                       Grid.Column="1"
+                       Style="{StaticResource PageHeaderTextStyle}"
+                       Text="Shopping Cart"
+                       TextTrimming="WordEllipsis" />
+        </Grid>
+        <ScrollViewer x:Name="ScrollContainer"
+                      Grid.Row="1"
+                      HorizontalScrollMode="Auto"
+                      Style="{StaticResource HorizontalScrollViewerStyle}">
+            <Grid x:Name="content"
+                  Width="Auto"
+                  Height="Auto"
+                  Margin="120,0,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--  Overview  -->
+                <TextBlock x:Uid="OverviewLabel"
+                           x:Name="OverviewLabel"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Margin="0,0,0,10"
+                           Foreground="{StaticResource AWShopperAccentTextBrush}"
+                           Style="{StaticResource SubheaderTextStyle}"
+                           Text="Overview" />
+                <StackPanel x:Name="OverviewPanel"
+                            Grid.Row="2"
+                            MaxWidth="600"
+                            Margin="0,0,50,0">
+                    <Grid x:Name="grid"
+                          Width="300"
+                          Height="110">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Uid="TotalItemsLabel"
+                                   x:Name="textBlock2"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   FontSize="18"
+                                   Text="Total items:"
+                                   TextTrimming="WordEllipsis" />
+                        <TextBlock x:Name="textBlock5"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="18"
+                                   Text="{Binding FullPrice,
+                                                  Mode=TwoWay}"
+                                   TextTrimming="WordEllipsis" />
+                        <TextBlock x:Uid="DiscountCodesLabel"
+                                   x:Name="textBlock3"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   FontSize="18"
+                                   Text="Discount codes:"
+                                   TextTrimming="WordEllipsis" />
+                        <TextBlock x:Name="textBlock6"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="18"
+                                   Text="{Binding TotalDiscount,
+                                                  Mode=TwoWay}"
+                                   TextTrimming="WordEllipsis" />
+                        <TextBlock x:Uid="TotalLabel"
+                                   x:Name="textBlock4"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   FontSize="24"
+                                   Text="Total:"
+                                   TextTrimming="WordEllipsis" />
+                        <TextBlock x:Name="textBlock7"
+                                   Grid.Row="2"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="24"
+                                   Foreground="{StaticResource AWShopperAccentTextBrush}"
+                                   Text="{Binding TotalPrice,
+                                                  Mode=TwoWay}"
+                                   TextTrimming="WordEllipsis" />
+                    </Grid>
+                    <Button x:Uid="CheckoutButton"
+                            x:Name="CheckoutButton"
+                            Margin="0,20,0,0"
+                            HorizontalAlignment="Stretch"
+                            AutomationProperties.AutomationId="CheckoutButton"
+                            Background="{StaticResource AWShopperAccentBrush}"
+                            Command="{Binding CheckoutCommand}"
+                            Content="Checkout" />
+                </StackPanel>
+
+                <!--  Items  -->
+                <TextBlock x:Uid="ItemsLabel"
+                           x:Name="ItemsLabel"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           Margin="5,2,0,8"
+                           Foreground="{StaticResource AWShopperAccentTextBrush}"
+                           Style="{StaticResource SubheaderTextStyle}"
+                           Text="Items" />
+
+                <!--
+                    The AutoRotatingGridView control, that automatically rearranges items,
+                    when the app is switched to portrait mode, or to minimal layout mode.
+                -->
+                <awcontrols:AutoRotatingGridView x:Uid="ShoppingCartItemsGridView"
+                                                 x:Name="ShoppingCartItemsGridView"
+                                                 Grid.Row="2"
+                                                 Grid.RowSpan="2"
+                                                 Grid.Column="1"
+                                                 Width="Auto"
+                                                 Margin="0,0,0,0"
+                                                 VerticalAlignment="Top"
+                                                 AutomationProperties.AutomationId="ShoppingCartItemsGridView"
+                                                 ItemTemplate="{StaticResource ShoppingCartItemTemplate}"
+                                                 ItemsSource="{Binding ShoppingCartItemViewModels}"
+                                                 MinimalItemTemplate="{StaticResource ShoppingCartItemTemplateMinimal}"
+                                                 SelectedItem="{Binding SelectedItem,
+                                                                        Mode=TwoWay}"
+                                                 SelectionMode="Single">
+                    <awcontrols:AutoRotatingGridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid ItemWidth="400" Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </awcontrols:AutoRotatingGridView.ItemsPanel>
+                    <awcontrols:AutoRotatingGridView.PortraitItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid ItemWidth="400" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </awcontrols:AutoRotatingGridView.PortraitItemsPanel>
+                    <awcontrols:AutoRotatingGridView.MinimalItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel HorizontalAlignment="Left" />
+                        </ItemsPanelTemplate>
+                    </awcontrols:AutoRotatingGridView.MinimalItemsPanel>
+                    <Style TargetType="Control">
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    </Style>
+                </awcontrols:AutoRotatingGridView>
+            </Grid>
+        </ScrollViewer>
+
+        <!--  Sign In UserControl  -->
+        <local:SignInUserControl Grid.RowSpan="2"
+                                 Grid.ColumnSpan="2"
+                                 DataContext="{Binding SignInUserControlViewModel}"
+                                 IsEnabled="{Binding IsOpened}"
+                                 Visibility="{Binding IsOpened,
+                                                      Mode=TwoWay,
+                                                      Converter={StaticResource BooleanToVisibilityConverter}}"
+                                 d:IsHidden="True" />
+    </Grid>
+    <!--  AppBar  -->
+    <Page.BottomAppBar>
+        <CommandBar x:Uid="BottomAppBar"
+                    AutomationProperties.AutomationId="BottomAppBar"
+                    IsOpen="{Binding IsBottomAppBarOpened,
+                                     Mode=TwoWay}"
+                    IsSticky="True"
+                    Style="{StaticResource AppBarStyle}"
+                    Visibility="{Binding IsItemSelected,
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="EditAmountAppBarButton"
+                              x:Name="EditAmountAppBarButton"
+                              Margin="0,1,0,-1"
+                              AutomationProperties.AutomationId="EditAmountAppBarButton"
+                              Command="{Binding EditAmountCommand}"
+                              Icon="Edit"
+                              Label="Edit"
+                              Visibility="{Binding SelectedItem,
+                                                   Converter={StaticResource NotNullToVisibleConverter}}">
+                    <AppBarButton.Flyout>
+                        <Flyout FlyoutPresenterStyle="{StaticResource AWShopperFlyoutStyle}">
+                            <Grid x:Name="PopupPanel"
+                                  Height="200"
+                                  Background="{StaticResource AppBarBackgroundThemeBrush}"
+                                  Opacity=".9">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="65" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Uid="EditQuantityLabel"
+                                           Grid.Row="0"
+                                           Margin="15,10,10,0"
+                                           FontSize="34"
+                                           Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                                           Text="Edit Quantity"
+                                           TextTrimming="WordEllipsis" />
+                                <Grid x:Name="ContentPopupGrid"
+                                      Grid.Row="1"
+                                      Margin="20,0,10,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Image x:Uid="SelectedProductImage" Source="{Binding SelectedItem.Image}" />
+                                    <AppBarButton x:Uid="DecrementQuantityButton"
+                                                  x:Name="DecrementQuantityButton"
+                                                  Grid.Column="1"
+                                                  Margin="0,15,0,0"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  AutomationProperties.AutomationId="DecrementQuantityButton"
+                                                  Command="{Binding DecrementCountCommand}"
+                                                  Icon="Remove"
+                                                  Label="Remove"
+                                                  Padding="16,4,12,4"
+                                                  RenderTransformOrigin="0.5,0.5">
+                                        <Button.RenderTransform>
+                                            <CompositeTransform />
+                                        </Button.RenderTransform>
+                                    </AppBarButton>
+                                    <TextBlock x:Name="EditQuantity"
+                                               Grid.Column="2"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="55"
+                                               Foreground="{StaticResource AwShopperAccentText2Brush}"
+                                               Text="{Binding SelectedItem.Quantity}" />
+                                    <AppBarButton x:Uid="IncrementQuantityButton"
+                                                  x:Name="IncrementQuantityButton"
+                                                  Grid.Column="3"
+                                                  Margin="0,15,0,0"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  AutomationProperties.AutomationId="IncrementQuantityButton"
+                                                  Command="{Binding IncrementCountCommand}"
+                                                  Icon="Add"
+                                                  Label="Add"
+                                                  RenderTransformOrigin="0.5,0.5">
+                                        <Button.RenderTransform>
+                                            <CompositeTransform />
+                                        </Button.RenderTransform>
+                                    </AppBarButton>
+                                </Grid>
+                            </Grid>
+                        </Flyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+                <AppBarButton x:Uid="RemoveAppBarButton"
+                              x:Name="RemoveAppBarButton"
+                              AutomationProperties.AutomationId="RemoveAppBarButton"
+                              Command="{Binding RemoveCommand}"
+                              CommandParameter="{Binding SelectedItem}"
+                              Icon="Remove"
+                              Label="Remove"
+                              Visibility="{Binding SelectedItem,
+                                                   Converter={StaticResource NotNullToVisibleConverter}}" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</local:NavigationAwarePage>

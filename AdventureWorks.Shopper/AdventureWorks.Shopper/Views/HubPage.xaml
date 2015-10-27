@@ -1,0 +1,349 @@
+<local:NavigationAwarePage x:Class="AdventureWorks.Shopper.Views.HubPage"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:awbehaviors="using:AdventureWorks.Shopper.Behaviors"
+                           xmlns:awcontrols="using:AdventureWorks.Shopper.Controls"
+                           xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:designViewModels="using:AdventureWorks.Shopper.DesignViewModels"
+                           xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+                           xmlns:local="using:AdventureWorks.Shopper.Views"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+                           xmlns:triggers="using:AdventureWorks.Shopper.Triggers"
+                           xmlns:views="using:AdventureWorks.Shopper.Views"
+                           x:Uid="Page"
+                           x:Name="pageRoot"
+                           IsTabStop="false"
+                           d:DataContext="{d:DesignInstance designViewModels:HubPageDesignViewModel,
+                                                            IsDesignTimeCreatable=True}"
+                           prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+                           mc:Ignorable="d">
+    <local:NavigationAwarePage.Resources>
+        <!--<Style TargetType="views:ItemDetailPage" />-->
+        <!--
+            Collection of grouped items displayed by this page, bound to a subset
+            of the complete item list because items in groups cannot be virtualized
+        -->
+        <CollectionViewSource x:Name="groupedItemsViewSource"
+                              IsSourceGrouped="true"
+                              ItemsPath="Products"
+                              Source="{Binding RootCategories}" />
+    </local:NavigationAwarePage.Resources>
+
+    <!--<local:NavigationAwarePage.TopAppBar>
+        <AppBar Style="{StaticResource AppBarStyle}"
+                x:Uid="TopAppBar">
+            <views:TopAppBarUserControl />
+        </AppBar>
+    </local:NavigationAwarePage.TopAppBar>-->
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <VisualStateManager.VisualStateGroups>
+            <!--  Visual states reflect the application's view state  -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="DefaultLayout">
+                    <VisualState.StateTriggers>
+                        <triggers:LayoutTrigger LayoutState="Landscape" />
+                    </VisualState.StateTriggers>
+                    <!--  The default Visibility properties are set in the XAML that defines the objects.  -->
+                </VisualState>
+                <VisualState x:Name="PortraitLayout">
+                    <VisualState.StateTriggers>
+                        <triggers:LayoutTrigger LayoutState="Portrait" />
+                    </VisualState.StateTriggers>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemsGridView" Storyboard.TargetProperty="Padding">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="40,0,0,30" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="semanticZoom" Storyboard.TargetProperty="CanChangeViews">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="false" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="semanticZoom" Storyboard.TargetProperty="IsZoomOutButtonEnabled">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="false" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="titleGrid" Storyboard.TargetProperty="Grid.ColumnDefinitions[0].Width">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="40" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="(views:SearchUserControl.IsCompact)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>True</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <!--
+                    The back button and title have different styles when in minimal layout, and the list representation is substituted
+                    for the grid displayed in all other view states
+                -->
+                <VisualState x:Name="MinimalLayout">
+                    <VisualState.StateTriggers>
+                        <triggers:LayoutTrigger LayoutState="Minimal" />
+                    </VisualState.StateTriggers>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemsGridView" Storyboard.TargetProperty="Padding">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="20,0,10,0" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MinimalBackButtonStyle}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="semanticZoom" Storyboard.TargetProperty="CanChangeViews">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="false" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="semanticZoom" Storyboard.TargetProperty="IsZoomOutButtonEnabled">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="false" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AppLogo" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>150</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="AppLogo" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>10,30,0,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="shoppingCartTabUserControl" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>0,37,-20,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>0,37,0,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="(views:SearchUserControl.IsCompact)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>True</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="HorizontalAlignment">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="Width">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>NaN</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="titleGrid" Storyboard.TargetProperty="Grid.ColumnDefinitions[0].Width">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="20" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="titleGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton"
+                    AutomationProperties.AutomationId="HubPageGoBackButton"
+                    Command="{Binding GoBackCommand,
+                                      ElementName=pageRoot}"
+                    Style="{StaticResource BackButtonStyle}" />
+            <Image x:Name="AppLogo"
+                   Grid.Column="1"
+                   Height="60"
+                   Margin="0,0,0,0"
+                   HorizontalAlignment="Left"
+                   AutomationProperties.Name="AppLogo"
+                   Source="../Assets/BannerLogo.png" />
+            <local:SearchUserControl x:Name="searchUserControl"
+                                     Grid.Column="0"
+                                     Grid.ColumnSpan="2"
+                                     Width="400"
+                                     Height="80"
+                                     HorizontalAlignment="Right" />
+            <local:ShoppingCartTabUserControl x:Name="shoppingCartTabUserControl"
+                                              Grid.Column="2"
+                                              Margin="15"
+                                              RenderTransformOrigin="0.5,0.5">
+                <local:ShoppingCartTabUserControl.RenderTransform>
+                    <CompositeTransform />
+                </local:ShoppingCartTabUserControl.RenderTransform>
+            </local:ShoppingCartTabUserControl>
+        </Grid>
+        <ProgressRing Grid.Row="1"
+                      Width="100"
+                      Height="100"
+                      IsActive="{Binding LoadingData}" />
+        <SemanticZoom x:Name="semanticZoom" Grid.Row="1">
+            <SemanticZoom.ZoomedOutView>
+                <GridView x:Name="zoomedOutGrid"
+                          AutomationProperties.AutomationId="HubPageGridView"
+                          Foreground="White"
+                          ItemTemplate="{StaticResource AWShopperItemTemplateSemanticZoom}"
+                          Padding="120,0,0,0"
+                          ScrollViewer.IsHorizontalScrollChainingEnabled="False">
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid ItemHeight="250"
+                                      ItemWidth="250"
+                                      MaximumRowsOrColumns="2"
+                                      VerticalChildrenAlignment="Center" />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+            </SemanticZoom.ZoomedOutView>
+            <SemanticZoom.ZoomedInView>
+                <!--
+                    The MultipleSizedGridView is a custom user control that is used to display multiple-sized elements in the grid.
+                    It also includes the functionality of the custom AutoRotatingGridView control, that automatically rearranges items,
+                    when the app is switched to portrait mode, or to minimal layout mode.
+                -->
+                <awcontrols:MultipleSizedGridView x:Name="itemsGridView"
+                                                  Margin="0,0,0,0"
+                                                  AutomationProperties.AutomationId="HubPageItemGridView"
+                                                  AutomationProperties.Name="Grouped Items"
+                                                  IsItemClickEnabled="True"
+                                                  ItemTemplate="{StaticResource AWShopperItemTemplate}"
+                                                  ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
+                                                  Loaded="ItemsGridView_Loaded"
+                                                  MinimalItemTemplate="{StaticResource ProductTemplateMinimal}"
+                                                  Padding="120,0,40,46"
+                                                  ScrollViewer.IsHorizontalScrollChainingEnabled="False"
+                                                  SelectionMode="None">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <awbehaviors:NavigateWithEventArgsToPageAction EventArgsParameterPath="ClickedItem.ProductNumber" TargetPage="AdventureWorks.Shopper.Views.ItemDetailPage" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                    <awcontrols:MultipleSizedGridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </awcontrols:MultipleSizedGridView.ItemsPanel>
+                    <awcontrols:MultipleSizedGridView.PortraitItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </awcontrols:MultipleSizedGridView.PortraitItemsPanel>
+                    <awcontrols:MultipleSizedGridView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <Button Margin="5,0,0,10"
+                                            AutomationProperties.Name="{Binding Title}"
+                                            Command="{Binding CategoryNavigationCommand}"
+                                            Foreground="{StaticResource AWShopperAccentTextBrush}"
+                                            Style="{StaticResource TextPrimaryButtonStyle}">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Style="{StaticResource GroupHeaderTextStyle}" Text="{Binding Title}" />
+                                                <TextBlock Margin="10,0"
+                                                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                           Style="{StaticResource GroupHeaderTextStyle}"
+                                                           Text="{StaticResource ChevronGlyph}" />
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                            <GroupStyle.Panel>
+                                <ItemsPanelTemplate>
+                                    <VariableSizedWrapGrid Margin="0,0,80,0"
+                                                           ItemHeight="250"
+                                                           ItemWidth="250"
+                                                           Orientation="Vertical" />
+                                </ItemsPanelTemplate>
+                            </GroupStyle.Panel>
+                        </GroupStyle>
+                    </awcontrols:MultipleSizedGridView.GroupStyle>
+                    <awcontrols:MultipleSizedGridView.PortraitGroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <Button Margin="5,0,0,10"
+                                            AutomationProperties.Name="{Binding Title}"
+                                            Command="{Binding CategoryNavigationCommand}"
+                                            Foreground="{StaticResource AWShopperAccentTextBrush}"
+                                            Style="{StaticResource TextPrimaryButtonStyle}">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Style="{StaticResource GroupHeaderTextStyle}" Text="{Binding Title}" />
+                                                <TextBlock Margin="10,0"
+                                                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                           Style="{StaticResource GroupHeaderTextStyle}"
+                                                           Text="{StaticResource ChevronGlyph}" />
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                            <GroupStyle.Panel>
+                                <ItemsPanelTemplate>
+                                    <VariableSizedWrapGrid Margin="0,0,0,20"
+                                                           ItemHeight="250"
+                                                           ItemWidth="250"
+                                                           Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </GroupStyle.Panel>
+                        </GroupStyle>
+                    </awcontrols:MultipleSizedGridView.PortraitGroupStyle>
+                    <awcontrols:MultipleSizedGridView.MinimalGroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <Button Margin="10,10,0,10"
+                                            AutomationProperties.Name="Group Title"
+                                            Command="{Binding CategoryNavigationCommand}"
+                                            Foreground="{StaticResource AWShopperAccentTextBrush}"
+                                            Style="{StaticResource TextPrimaryButtonStyle}">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Style="{StaticResource GroupHeaderTextStyle}" Text="{Binding Title}" />
+                                                <TextBlock Margin="10,0"
+                                                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                           Style="{StaticResource GroupHeaderTextStyle}"
+                                                           Text="{StaticResource ChevronGlyph}" />
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                            <GroupStyle.Panel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Margin="0,0,5,0" HorizontalAlignment="Stretch" />
+                                </ItemsPanelTemplate>
+                            </GroupStyle.Panel>
+                        </GroupStyle>
+                    </awcontrols:MultipleSizedGridView.MinimalGroupStyle>
+                    <awcontrols:MultipleSizedGridView.ItemContainerStyle>
+                        <Style TargetType="Control">
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                        </Style>
+                    </awcontrols:MultipleSizedGridView.ItemContainerStyle>
+                </awcontrols:MultipleSizedGridView>
+            </SemanticZoom.ZoomedInView>
+        </SemanticZoom>
+    </Grid>
+</local:NavigationAwarePage>
