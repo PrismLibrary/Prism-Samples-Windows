@@ -1,0 +1,184 @@
+﻿<SettingsFlyout x:Class="AdventureWorks.Shopper.Views.ChangeDefaultsFlyout"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:designViewModels="using:AdventureWorks.Shopper.DesignViewModels"
+                xmlns:local="using:AdventureWorks.Shopper.Views"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+                x:Uid="Page"
+                Title="Change Defaults"
+                Background="{StaticResource SettingsFlyoutBackgroundThemeBrush}"
+                BorderBrush="{StaticResource AWShopperFlyoutBorderBrush}"
+                d:DataContext="{d:DesignInstance designViewModels:ChangeDefaultsDesignViewModel,
+                                                 IsDesignTimeCreatable=True}"
+                prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+                mc:Ignorable="d">
+
+    <!--  Settings Panel Content  -->
+    <Grid>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel VerticalAlignment="top">
+
+                <!--  Shipping Address  -->
+                <Button x:Uid="ExpandShippingAddressButton"
+                        x:Name="ExpandShippingAddressButton"
+                        AutomationProperties.AutomationId="ExpandShippingAddressButton">
+                    <Button.Flyout>
+                        <Flyout>
+                            <ScrollViewer MaxWidth="285" MaxHeight="270">
+                                <ListView x:Name="ShippingAddressList"
+                                          HorizontalAlignment="Stretch"
+                                          AutomationProperties.AutomationId="ShippingAddressList"
+                                          ItemTemplate="{StaticResource CheckoutDataFlyoutTemplate}"
+                                          ItemsSource="{Binding ShippingAddresses}"
+                                          SelectedItem="{Binding SelectedShippingAddress,
+                                                                 Mode=TwoWay}"
+                                          SelectionMode="Single" />
+                            </ScrollViewer>
+                        </Flyout>
+                    </Button.Flyout>
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Uid="ShippingAddressLabel"
+                                       FontSize="22"
+                                       Padding="5,0,5,5"
+                                       Style="{StaticResource GroupHeaderTextStyle}"
+                                       Text="Shipping Address" />
+                            <TextBlock x:Name="ShippingAddressChevronGlyph"
+                                       Margin="10,0"
+                                       FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                       Style="{StaticResource GroupHeaderTextStyle}"
+                                       Text="{StaticResource OpenedChevronGlyph}" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <StackPanel Height="60" Margin="0,10,20,20">
+                    <TextBlock x:Uid="NoDefaultShippingAddressLabel"
+                               Style="{StaticResource BodyTextBlockStyle}"
+                               Text="No default Shipping Address is selected."
+                               Visibility="{Binding SelectedShippingAddress,
+                                                    Converter={StaticResource NullToVisibleConverter}}" />
+                    <ContentControl DataContext="{Binding SelectedShippingAddress}" IsTabStop="False">
+                        <ContentControl.Content>
+                            <StackPanel Visibility="{Binding SelectedShippingAddress, Converter={StaticResource NotNullToVisibleConverter}}">
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding FirstLine}" />
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding SecondLine}" />
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding BottomLine}" />
+                            </StackPanel>
+                        </ContentControl.Content>
+                    </ContentControl>
+                </StackPanel>
+
+                <!--  Billing Address  -->
+                <Button x:Uid="ExpandBillingAddressButton"
+                        x:Name="ExpandBillingAddressButton"
+                        AutomationProperties.AutomationId="ExpandBillingAddressButton">
+                    <Button.Flyout>
+                        <Flyout Placement="Bottom">
+                            <ScrollViewer MaxWidth="285" MaxHeight="270">
+                                <ListView x:Name="BillingAddressList"
+                                          HorizontalAlignment="Stretch"
+                                          AutomationProperties.AutomationId="BillingAddressList"
+                                          ItemTemplate="{StaticResource CheckoutDataFlyoutTemplate}"
+                                          ItemsSource="{Binding BillingAddresses}"
+                                          SelectedItem="{Binding SelectedBillingAddress,
+                                                                 Mode=TwoWay}"
+                                          SelectionMode="Single" />
+                            </ScrollViewer>
+                        </Flyout>
+                    </Button.Flyout>
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Uid="BillingAddressLabel"
+                                       FontSize="22"
+                                       Padding="5,0,5,5"
+                                       Style="{StaticResource GroupHeaderTextStyle}"
+                                       Text="Billing Address" />
+                            <TextBlock x:Name="BillingAddressChevronGlyph"
+                                       Margin="10,0"
+                                       FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                       Style="{StaticResource GroupHeaderTextStyle}"
+                                       Text="{StaticResource OpenedChevronGlyph}" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <StackPanel Height="60" Margin="0,10,20,20">
+                    <TextBlock x:Uid="NoDefaultBillingAddressLabel"
+                               Style="{StaticResource BodyTextBlockStyle}"
+                               Text="No default Billing Address is selected."
+                               Visibility="{Binding SelectedBillingAddress,
+                                                    Converter={StaticResource NullToVisibleConverter}}" />
+                    <ContentControl DataContext="{Binding SelectedBillingAddress}" IsTabStop="False">
+                        <ContentControl.Content>
+                            <StackPanel Visibility="{Binding SelectedBillingAddress, Converter={StaticResource NotNullToVisibleConverter}}">
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding FirstLine}" />
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding SecondLine}" />
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding BottomLine}" />
+                            </StackPanel>
+                        </ContentControl.Content>
+                    </ContentControl>
+                </StackPanel>
+
+                <!--  Payment Method  -->
+                <Button x:Uid="ExpandPaymentMethodButton"
+                        x:Name="ExpandPaymentMethodButton"
+                        AutomationProperties.AutomationId="ExpandPaymentMethodButton">
+                    <Button.Flyout>
+                        <Flyout Placement="Bottom">
+                            <ScrollViewer MaxWidth="285" MaxHeight="270">
+                                <ListView x:Name="PaymentMethodList"
+                                          HorizontalAlignment="Stretch"
+                                          AutomationProperties.AutomationId="PaymentMethodList"
+                                          ItemTemplate="{StaticResource CheckoutDataFlyoutTemplate}"
+                                          ItemsSource="{Binding PaymentMethods}"
+                                          SelectedItem="{Binding SelectedPaymentMethod,
+                                                                 Mode=TwoWay}"
+                                          SelectionMode="Single" />
+                            </ScrollViewer>
+                        </Flyout>
+                    </Button.Flyout>
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Uid="PaymentMethodLabel"
+                                       FontSize="22"
+                                       Padding="5,0,5,5"
+                                       Style="{StaticResource GroupHeaderTextStyle}"
+                                       Text="Payment Method" />
+                            <TextBlock x:Name="PaymentMethodChevronGlyph"
+                                       Margin="10,0"
+                                       FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                       Style="{StaticResource GroupHeaderTextStyle}"
+                                       Text="{StaticResource OpenedChevronGlyph}" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <StackPanel Height="60" Margin="0,10,20,20">
+                    <TextBlock x:Uid="NoDefaultPaymentMethodLabel"
+                               Style="{StaticResource BodyTextBlockStyle}"
+                               Text="No default Payment Method is selected."
+                               Visibility="{Binding SelectedPaymentMethod,
+                                                    Converter={StaticResource NullToVisibleConverter}}" />
+                    <ContentControl DataContext="{Binding SelectedPaymentMethod}" IsTabStop="False">
+                        <ContentControl.Content>
+                            <StackPanel Visibility="{Binding SelectedPaymentMethod, Converter={StaticResource NotNullToVisibleConverter}}">
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding FirstLine}" />
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding SecondLine}" />
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding BottomLine}" />
+                            </StackPanel>
+                        </ContentControl.Content>
+                    </ContentControl>
+                </StackPanel>
+
+                <Button x:Uid="SaveButton"
+                        Margin="0,20,20,0"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.AutomationId="SaveButton"
+                        Background="{StaticResource AWShopperAccentBrush}"
+                        Command="{Binding SaveCommand}"
+                        Content="Save"
+                        Foreground="{StaticResource AWShopperButtonForegroundBrush}" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</SettingsFlyout>

@@ -1,0 +1,198 @@
+<local:NavigationAwarePage x:Class="AdventureWorks.Shopper.Views.GroupDetailPage"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:awbehaviors="using:AdventureWorks.Shopper.Behaviors"
+                           xmlns:awcontrols="using:AdventureWorks.Shopper.Controls"
+                           xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:designViewModels="using:AdventureWorks.Shopper.DesignViewModels"
+                           xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+                           xmlns:local="using:AdventureWorks.Shopper.Views"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+                           xmlns:triggers="using:AdventureWorks.Shopper.Triggers"
+                           xmlns:views="using:AdventureWorks.Shopper.Views"
+                           x:Uid="Page"
+                           x:Name="pageRoot"
+                           IsTabStop="false"
+                           d:DataContext="{d:DesignInstance designViewModels:GroupDetailPageDesignViewModel,
+                                                            IsDesignTimeCreatable=True}"
+                           prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+                           mc:Ignorable="d">
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <VisualStateManager.VisualStateGroups>
+            <!--  Visual states reflect the application's view state  -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="DefaultLayout">
+                    <VisualState.StateTriggers>
+                        <triggers:LayoutTrigger LayoutState="Landscape" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <!--  The entire page respects the narrower 100-pixel margin convention for portrait  -->
+                <VisualState x:Name="PortraitLayout">
+                    <VisualState.StateTriggers>
+                        <triggers:LayoutTrigger LayoutState="Portrait" />
+                    </VisualState.StateTriggers>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemsGridView" Storyboard.TargetProperty="Padding">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="40,0,30,0" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="(views:SearchUserControl.IsCompact)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>True</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <!--
+                    The back button and title have different styles when in minimal layout, and the list representation is substituted
+                    for the grid displayed in all other view states
+                -->
+                <VisualState x:Name="MinimalLayout">
+                    <VisualState.StateTriggers>
+                        <triggers:LayoutTrigger LayoutState="Minimal" />
+                    </VisualState.StateTriggers>
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MinimalBackButtonStyle}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MinimalPageHeaderTextStyle}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="shoppingCartTabUserControl" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>0,37,-20,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemsGridView" Storyboard.TargetProperty="Padding">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="20,0,0,0" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>0,37,0,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="(views:SearchUserControl.IsCompact)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>True</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="HorizontalAlignment">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Stretch" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="searchUserControl" Storyboard.TargetProperty="Width">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>NaN</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  Back button and page title  -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton"
+                    AutomationProperties.AutomationId="GroupDetailsPageBackButton"
+                    Command="{Binding GoBackCommand,
+                                      ElementName=pageRoot}"
+                    Style="{StaticResource BackButtonStyle}" />
+            <TextBlock x:Name="pageTitle"
+                       Grid.Column="1"
+                       Margin="0,0,0,40"
+                       HorizontalAlignment="Stretch"
+                       Style="{StaticResource PageHeaderTextStyle}"
+                       Text="{Binding Title}"
+                       TextTrimming="CharacterEllipsis" />
+            <local:SearchUserControl x:Name="searchUserControl"
+                                     Grid.Column="0"
+                                     Grid.ColumnSpan="3"
+                                     Width="400"
+                                     Height="80"
+                                     Margin="0,20,0,0"
+                                     HorizontalAlignment="Right" />
+            <local:ShoppingCartTabUserControl x:Name="shoppingCartTabUserControl"
+                                              Grid.Column="3"
+                                              Margin="15"
+                                              RenderTransformOrigin="0.5,0.5">
+                <local:ShoppingCartTabUserControl.RenderTransform>
+                    <CompositeTransform />
+                </local:ShoppingCartTabUserControl.RenderTransform>
+            </local:ShoppingCartTabUserControl>
+        </Grid>
+        <!--
+            The AutoRotatingGridView control, that automatically rearranges items,
+            when the app is switched to portrait mode, or to minimal layout mode.
+        -->
+        <awcontrols:AutoRotatingGridView x:Name="itemsGridView"
+                                         Grid.Row="1"
+                                         Margin="0,0,0,0"
+                                         AutomationProperties.AutomationId="ItemsGridView"
+                                         AutomationProperties.Name="Items In Category"
+                                         IsItemClickEnabled="True"
+                                         ItemTemplate="{StaticResource ProductTemplate}"
+                                         ItemsSource="{Binding Items}"
+                                         Loaded="ItemsGridView_Loaded"
+                                         MinimalItemTemplate="{StaticResource ProductTemplateMinimal}"
+                                         Padding="120,0,30,50"
+                                         SelectionMode="None"
+                                         TabIndex="1">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <awbehaviors:NavigateWithEventArgsToPageAction EventArgsParameterPath="ClickedItem.ProductNumber" TargetPage="AdventureWorks.Shopper.Views.ItemDetailPage" />
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            <awcontrols:AutoRotatingGridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </awcontrols:AutoRotatingGridView.ItemsPanel>
+            <awcontrols:AutoRotatingGridView.PortraitItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </awcontrols:AutoRotatingGridView.PortraitItemsPanel>
+            <awcontrols:AutoRotatingGridView.MinimalItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Margin="0,0,5,0" HorizontalAlignment="Stretch" />
+                </ItemsPanelTemplate>
+            </awcontrols:AutoRotatingGridView.MinimalItemsPanel>
+            <awcontrols:AutoRotatingGridView.ItemContainerStyle>
+                <Style TargetType="Control">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Padding" Value="5,5,5,5" />
+                </Style>
+            </awcontrols:AutoRotatingGridView.ItemContainerStyle>
+        </awcontrols:AutoRotatingGridView>
+    </Grid>
+</local:NavigationAwarePage>

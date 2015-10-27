@@ -1,0 +1,968 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+
+            <Color x:Key="ItemSelectionColor">#FFE2742F</Color>
+
+            <!--  Default theme resources  -->
+            <SolidColorBrush x:Key="AWShopperAccentBrush" Color="#B8CB11" />
+            <SolidColorBrush x:Key="AWShopperAccentTextBrush" Color="#B8CB11" />
+            <SolidColorBrush x:Key="AWShopperButtonForegroundBrush" Color="Black" />
+            <SolidColorBrush x:Key="AWShopperFlyoutBorderBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundBrush" Color="White" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundLighterBrush" Color="White" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundLightestBrush" Color="White" />
+            <SolidColorBrush x:Key="AWShopperHighlightButtonForegroundBrush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperItemBackgroundBrush" Color="#FF353C41" />
+            <SolidColorBrush x:Key="AwShopperItemBorderBrush" Color="Transparent" />
+            <SolidColorBrush x:Key="AwShopperItemDiscountLine" Color="Gray" />
+            <SolidColorBrush x:Key="AwShopperAccentText2Brush" Color="{StaticResource ItemSelectionColor}" />
+            <SolidColorBrush x:Key="AwShopperRatingBrush" Color="Yellow" />
+            <SolidColorBrush x:Key="AwShopperFlyoutTextBrush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperTopBarButtonForegroundBrush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperTopBarButtonBackgroundBrush" Color="#FFAAB1B5" />
+
+            <!--  Application Background  -->
+            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FF2C3339" />
+            <SolidColorBrush x:Key="ModalBackgroundThemeBrush" Color="#FF2C3339" />
+            <SolidColorBrush x:Key="SettingsFlyoutBackgroundThemeBrush" Color="White" />
+
+
+            <x:String x:Key="BackButtonGlyph">&#xE071;</x:String>
+            <x:String x:Key="BackButtonMinimalGlyph">&#xE0BA;</x:String>
+
+            <!--  ListView Selection Color  -->
+            <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="{StaticResource ItemSelectionColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="{StaticResource ItemSelectionColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="{StaticResource ItemSelectionColor}" />
+            <SolidColorBrush x:Key="AWShopperItemSelectionColor" Color="{StaticResource ItemSelectionColor}" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="HighContrast">
+            <!--  High Contrast theme resources  -->
+            <SolidColorBrush x:Key="AWShopperAccentBrush" Color="{StaticResource SystemColorButtonFaceColor}" />
+            <SolidColorBrush x:Key="AWShopperAccentTextBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperButtonForegroundBrush" Color="{StaticResource SystemColorButtonTextColor}" />
+            <SolidColorBrush x:Key="AWShopperFlyoutBorderBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundLighterBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundLightestBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperHighlightButtonForegroundBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AwShopperItemBorderBrush" Color="White" />
+            <SolidColorBrush x:Key="AwShopperItemBackgroundBrush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperItemDiscountLine" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AwShopperAccentText2Brush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AwShopperRatingBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AwShopperFlyoutTextBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AwShopperTopBarButtonForegroundBrush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperTopBarButtonBackgroundBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+
+            <!--  Application Background  -->
+            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="Black" />
+            <SolidColorBrush x:Key="ModalBackgroundThemeBrush" Color="Black" />
+            <SolidColorBrush x:Key="SettingsFlyoutBackgroundThemeBrush" Color="Black" />
+
+
+            <x:String x:Key="BackButtonGlyph">&#xE071;</x:String>
+            <x:String x:Key="BackButtonMinimalGlyph">&#xE0C4;</x:String>
+
+            <!--  ListView Selection Color  -->
+            <SolidColorBrush x:Key="AWShopperItemSelectionColor" Color="White" />
+            <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="{StaticResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="{StaticResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="{StaticResource SystemColorHighlightColor}" />
+
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="HighContrastWhite">
+            <!--  High Contrast theme resources  -->
+            <SolidColorBrush x:Key="AWShopperAccentBrush" Color="{StaticResource SystemColorButtonFaceColor}" />
+            <SolidColorBrush x:Key="AWShopperAccentTextBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperButtonForegroundBrush" Color="{StaticResource SystemColorButtonTextColor}" />
+            <SolidColorBrush x:Key="AWShopperFlyoutBorderBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundLighterBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundLightestBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperHighlightButtonForegroundBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AwShopperItemBorderBrush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperItemBackgroundBrush" Color="White" />
+            <SolidColorBrush x:Key="AwShopperItemDiscountLine" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperAccentText2Brush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperRatingBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AwShopperFlyoutTextBrush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperTopBarButtonForegroundBrush" Color="White" />
+            <SolidColorBrush x:Key="AwShopperTopBarButtonBackgroundBrush" Color="Black" />
+
+            <!--  Application Background  -->
+            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="White" />
+            <SolidColorBrush x:Key="ModalBackgroundThemeBrush" Color="White" />
+            <SolidColorBrush x:Key="SettingsFlyoutBackgroundThemeBrush" Color="White" />
+
+
+            <x:String x:Key="BackButtonGlyph">&#xE071;</x:String>
+            <x:String x:Key="BackButtonMinimalGlyph">&#xE0C4;</x:String>
+
+            <!--  ListView Selection Color  -->
+            <SolidColorBrush x:Key="AWShopperItemSelectionColor" Color="White" />
+            <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="{StaticResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="{StaticResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="{StaticResource SystemColorHighlightColor}" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="HighContrastBlack">
+            <!--  High Contrast theme resources  -->
+            <SolidColorBrush x:Key="AWShopperAccentBrush" Color="{StaticResource SystemColorButtonFaceColor}" />
+            <SolidColorBrush x:Key="AWShopperAccentTextBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperButtonForegroundBrush" Color="{StaticResource SystemColorButtonTextColor}" />
+            <SolidColorBrush x:Key="AWShopperFlyoutBorderBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundLighterBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperItemForegroundLightestBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AWShopperHighlightButtonForegroundBrush" Color="{StaticResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="AwShopperItemBorderBrush" Color="White" />
+            <SolidColorBrush x:Key="AwShopperItemBackgroundBrush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperItemDiscountLine" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperAccentText2Brush" Color="White" />
+            <SolidColorBrush x:Key="AwShopperRatingBrush" Color="Yellow" />
+            <SolidColorBrush x:Key="AwShopperFlyoutTextBrush" Color="White" />
+            <SolidColorBrush x:Key="AwShopperTopBarButtonForegroundBrush" Color="Black" />
+            <SolidColorBrush x:Key="AwShopperTopBarButtonBackgroundBrush" Color="White" />
+
+            <!--  Application Background  -->
+            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="Black" />
+            <SolidColorBrush x:Key="ModalBackgroundThemeBrush" Color="Black" />
+            <SolidColorBrush x:Key="SettingsFlyoutBackgroundThemeBrush" Color="Black" />
+
+
+            <x:String x:Key="BackButtonGlyph">&#xE071;</x:String>
+            <x:String x:Key="BackButtonMinimalGlyph">&#xE0C4;</x:String>
+
+            <!--  ListView Selection Color  -->
+            <SolidColorBrush x:Key="AWShopperItemSelectionColor" Color="White" />
+            <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="{StaticResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="{StaticResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="{StaticResource SystemColorHighlightColor}" />
+        </ResourceDictionary>
+
+    </ResourceDictionary.ThemeDictionaries>
+
+    <!--  AW Shopper Brushes  -->
+    <SolidColorBrush x:Name="AWShopperItemDarkerBackgroundBrush" Color="#FF262C2F" />
+    <SolidColorBrush x:Name="AWShopperFlyoutContentBackground" Color="Black" />
+
+    <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
+    <x:String x:Key="OpenedChevronGlyph">&#xE015;</x:String>
+
+    <!--  Item Panel Templates  -->
+
+    <ItemsPanelTemplate x:Key="VerticalStackPanelItemsPanel">
+        <StackPanel Orientation="Vertical" />
+    </ItemsPanelTemplate>
+
+    <ItemsPanelTemplate x:Key="VerticalItemsStackPanelItemsPanel">
+        <ItemsStackPanel Orientation="Vertical" />
+    </ItemsPanelTemplate>
+
+    <!--  Default TextBox and PasswordBox styles to support Headers in High Contrast themes  -->
+
+    <Style x:Key="BaseTextBoxStyle" TargetType="TextBox">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="0"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Padding="0"
+                               Text="{Binding}"
+                               Visibility="{Binding Converter={StaticResource TextToHeaderVisibilityConverter}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+
+    <Style x:Key="BasePasswordBoxStyle" TargetType="PasswordBox">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="0"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Padding="0"
+                               Text="{Binding}"
+                               Visibility="{Binding Converter={StaticResource TextToHeaderVisibilityConverter}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+
+    <Style x:Key="BaseComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="0"
+                               Foreground="{StaticResource AWShopperItemForegroundBrush}"
+                               Padding="0"
+                               Text="{Binding}"
+                               Visibility="{Binding Converter={StaticResource TextToHeaderVisibilityConverter}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+
+    <Style BasedOn="{StaticResource BaseTextBoxStyle}" TargetType="TextBox" />
+
+    <Style BasedOn="{StaticResource BasePasswordBoxStyle}" TargetType="PasswordBox" />
+
+    <Style BasedOn="{StaticResource BaseComboBoxStyle}" TargetType="ComboBox" />
+
+    <!--  TextBox and PasswordBox styles for SettingsFlyouts to support High Contrast themes  -->
+
+    <Style x:Key="SettingFlyoutTextBoxStyle"
+           BasedOn="{StaticResource BaseTextBoxStyle}"
+           TargetType="TextBox">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="0"
+                               Foreground="{StaticResource AwShopperFlyoutTextBrush}"
+                               Padding="0"
+                               Text="{Binding}"
+                               Visibility="{Binding Converter={StaticResource TextToHeaderVisibilityConverter}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SettingFlyoutPasswordBoxStyle"
+           BasedOn="{StaticResource BasePasswordBoxStyle}"
+           TargetType="PasswordBox">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="0"
+                               Foreground="{StaticResource AwShopperFlyoutTextBrush}"
+                               Padding="0"
+                               Text="{Binding}"
+                               Visibility="{Binding Converter={StaticResource TextToHeaderVisibilityConverter}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  TextBlock styles  -->
+
+    <Style x:Key="BasicTextStyle" TargetType="TextBlock">
+        <!--
+            Setter Property="Foreground"
+            Value="{StaticResource ApplicationForegroundThemeBrush}" /
+        -->
+        <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+        <Setter Property="TextTrimming" Value="WordEllipsis" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Typography.StylisticSet20" Value="True" />
+        <Setter Property="Typography.DiscretionaryLigatures" Value="True" />
+        <Setter Property="Typography.CaseSensitiveForms" Value="True" />
+    </Style>
+
+    <Style x:Key="BaselineTextStyle"
+           BasedOn="{StaticResource BasicTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="LineHeight" Value="20" />
+        <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+        <!--  Properly align text along its baseline  -->
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <TranslateTransform X="-1" Y="4" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--<Style
+       x:Key=""></Style>-->
+
+    <Style x:Key="HeaderTextStyle"
+           BasedOn="{StaticResource BaselineTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="56" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="LineHeight" Value="40" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <TranslateTransform X="-2" Y="8" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SubheaderTextStyle"
+           BasedOn="{StaticResource BaselineTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="26.667" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="LineHeight" Value="30" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <TranslateTransform X="-1" Y="6" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TitleTextStyle"
+           BasedOn="{StaticResource BaselineTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <Style x:Key="ItemTextStyle"
+           BasedOn="{StaticResource BaselineTextStyle}"
+           TargetType="TextBlock" />
+
+    <Style x:Key="BodyTextStyle"
+           BasedOn="{StaticResource BaselineTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="SemiLight" />
+    </Style>
+
+    <Style x:Key="CaptionTextStyle"
+           BasedOn="{StaticResource BaselineTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+    </Style>
+
+    <Style x:Key="GroupHeaderTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+        <Setter Property="TextTrimming" Value="WordEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="Typography.StylisticSet20" Value="True" />
+        <Setter Property="Typography.Kerning" Value="True" />
+        <Setter Property="Typography.DiscretionaryLigatures" Value="True" />
+        <Setter Property="Typography.CaseSensitiveForms" Value="True" />
+        <Setter Property="FontSize" Value="26.667" />
+        <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="LineHeight" Value="30" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <TranslateTransform X="-2" Y="6" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  Button styles  -->
+
+    <!--
+        TextButtonStyle is used to style a Button using subheader-styled text with no other adornment.  There
+        are two styles that are based on TextButtonStyle (TextPrimaryButtonStyle and TextSecondaryButtonStyle)
+        which are used in the GroupedItemsPage as a group header and in the FileOpenPickerPage for triggering
+        commands.
+    -->
+    <Style x:Key="TextButtonStyle" TargetType="ButtonBase">
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <Grid Background="Transparent">
+                        <ContentPresenter x:Name="Text" Content="{TemplateBinding Content}" />
+                        <Rectangle x:Name="FocusVisualWhite"
+                                   IsHitTestVisible="False"
+                                   Opacity="0"
+                                   Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}"
+                                   StrokeDashArray="1,1"
+                                   StrokeDashOffset="1.5"
+                                   StrokeEndLineCap="Square" />
+                        <Rectangle x:Name="FocusVisualBlack"
+                                   IsHitTestVisible="False"
+                                   Opacity="0"
+                                   Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}"
+                                   StrokeDashArray="1,1"
+                                   StrokeDashOffset="0.5"
+                                   StrokeEndLineCap="Square" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Text" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ApplicationPointerOverForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Text" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ApplicationPressedForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Text" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ApplicationPressedForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="FocusVisualWhite"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="FocusVisualBlack"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked" />
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Text" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Indeterminate" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TextPrimaryButtonStyle"
+           BasedOn="{StaticResource TextButtonStyle}"
+           TargetType="ButtonBase">
+        <Setter Property="Foreground" Value="{StaticResource ApplicationHeaderForegroundThemeBrush}" />
+    </Style>
+
+    <!--  Title area styles  -->
+
+    <Style x:Key="PageHeaderTextStyle"
+           BasedOn="{StaticResource HeaderTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Margin" Value="0,0,30,40" />
+    </Style>
+
+    <Style x:Key="PageSubheaderTextStyle"
+           BasedOn="{StaticResource SubheaderTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Margin" Value="0,0,0,40" />
+    </Style>
+
+    <Style x:Key="MinimalPageHeaderTextStyle"
+           BasedOn="{StaticResource PageSubheaderTextStyle}"
+           TargetType="TextBlock">
+        <Setter Property="Margin" Value="0,0,18,40" />
+    </Style>
+
+    <!--
+        BackButtonStyle is used to style a Button for use in the title area of a page.  Margins appropriate for
+        the conventional page layout are included as part of the style.
+    -->
+    <Style x:Key="BackButtonStyle" TargetType="Button">
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="Width" Value="48" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Margin" Value="36,0,36,36" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="FontFamily" Value="Segoe UI Symbol" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="56" />
+        <Setter Property="AutomationProperties.AutomationId" Value="BackButton" />
+        <Setter Property="AutomationProperties.Name" Value="Back" />
+        <Setter Property="AutomationProperties.ItemType" Value="Navigation Button" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="RootGrid">
+                        <Grid Margin="-1,-16,0,0">
+                            <TextBlock x:Name="BackgroundGlyph"
+                                       Foreground="{StaticResource BackButtonBackgroundThemeBrush}"
+                                       Text="&#xE0A8;" />
+                            <TextBlock x:Name="NormalGlyph"
+                                       Foreground="{StaticResource BackButtonForegroundThemeBrush}"
+                                       Text="{StaticResource BackButtonGlyph}" />
+                            <TextBlock x:Name="ArrowGlyph"
+                                       Foreground="{StaticResource BackButtonPressedForegroundThemeBrush}"
+                                       Opacity="0"
+                                       Text="&#xE0A6;" />
+                        </Grid>
+                        <Rectangle x:Name="FocusVisualWhite"
+                                   IsHitTestVisible="False"
+                                   Opacity="0"
+                                   Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}"
+                                   StrokeDashArray="1,1"
+                                   StrokeDashOffset="1.5"
+                                   StrokeEndLineCap="Square" />
+                        <Rectangle x:Name="FocusVisualBlack"
+                                   IsHitTestVisible="False"
+                                   Opacity="0"
+                                   Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}"
+                                   StrokeDashArray="1,1"
+                                   StrokeDashOffset="0.5"
+                                   StrokeEndLineCap="Square" />
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackgroundGlyph" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BackButtonPointerOverBackgroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalGlyph" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BackButtonPointerOverForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackgroundGlyph" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BackButtonForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="ArrowGlyph"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="NormalGlyph"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="FocusVisualWhite"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="FocusVisualBlack"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused" />
+                                <VisualState x:Name="PointerFocused" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--
+        PortraitBackButtonStyle is used to style a Button for use in the title area of a portrait page.  Margins appropriate
+        for the conventional page layout are included as part of the style.
+    -->
+    <Style x:Key="PortraitBackButtonStyle"
+           BasedOn="{StaticResource BackButtonStyle}"
+           TargetType="Button">
+        <Setter Property="Margin" Value="26,0,26,36" />
+    </Style>
+
+    <!--
+        MinimalBackButtonStyle is used to style a Button for use in the title area of a minimal layout page.  Margins appropriate
+        for the conventional page layout are included as part of the style.
+    -->
+    <Style x:Key="MinimalBackButtonStyle"
+           BasedOn="{StaticResource PortraitBackButtonStyle}"
+           TargetType="Button">
+        <Setter Property="Margin" Value="20,0,0,20" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  ScrollViewer styles  -->
+
+    <Style x:Key="HorizontalScrollViewerStyle" TargetType="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Enabled" />
+        <Setter Property="ScrollViewer.VerticalScrollMode" Value="Disabled" />
+        <Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
+    </Style>
+
+    <Style x:Key="VerticalScrollViewerStyle" TargetType="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollMode" Value="Enabled" />
+        <Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
+    </Style>
+
+    <!--  Page layout roots typically use entrance animations and a theme-appropriate background color  -->
+
+    <Style x:Key="LayoutRootStyle" TargetType="Panel">
+        <Setter Property="Background" Value="{StaticResource ApplicationPageBackgroundThemeBrush}" />
+        <Setter Property="ChildrenTransitions">
+            <Setter.Value>
+                <TransitionCollection>
+                    <EntranceThemeTransition />
+                </TransitionCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  Form custom styles  -->
+    <Style x:Key="FormTitleStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}" />
+        <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+        <Setter Property="Margin" Value="0,20,0,5" />
+    </Style>
+    <Style x:Key="ErrorMessageStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Red" />
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+    </Style>
+
+    <Style x:Key="HighlightTextBoxStyle"
+           BasedOn="{StaticResource BaseTextBoxStyle}"
+           TargetType="TextBox">
+        <Setter Property="BorderBrush" Value="Red" />
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="0"
+                               Foreground="Red"
+                               Padding="0"
+                               Text="{Binding}"
+                               Visibility="{Binding Converter={StaticResource TextToHeaderVisibilityConverter}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="HighlightComboBoxStyle"
+           BasedOn="{StaticResource BaseComboBoxStyle}"
+           TargetType="ComboBox">
+        <Setter Property="BorderBrush" Value="Red" />
+    </Style>
+
+    <!--  Top AppBar style  -->
+    <Style x:Key="HouseStyle" TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <StackPanel x:Name="ControlRoot" VerticalAlignment="Top">
+                        <StackPanel.RenderTransform>
+                            <ScaleTransform />
+                        </StackPanel.RenderTransform>
+                        <Viewbox x:Name="IconViewBox"
+                                 Width="86.4"
+                                 Height="86.4"
+                                 Stretch="Uniform">
+                            <Canvas x:Name="IconCanvas"
+                                    Width="86.4"
+                                    Height="86.4"
+                                    Background="{StaticResource AwShopperTopBarButtonBackgroundBrush}">
+                                <Path x:Name="IconGlyph"
+                                      Data="M 225.582,7.63947C 225.582,3.62878 222.31,0.334167 218.299,0.334167L 194.242,0.334167C 190.217,0.334167 186.938,3.62878 186.938,7.63947L 186.938,22.0661L 225.582,60.7488L 225.582,7.63947 Z M 281.939,143.101L 155.057,16.2112C 148.965,10.1259 139.081,10.1259 132.967,16.2112L 6.09198,143.101C -2.03451e-005,149.178 -2.03451e-005,159.09 6.09198,165.19C 9.1413,168.226 13.1306,169.75 17.148,169.75C 21.1133,169.75 25.1253,168.226 28.1826,165.19L 144.016,49.3193L 259.864,165.19C 265.965,171.245 275.855,171.267 281.939,165.19C 288.031,159.09 288.063,149.223 281.939,143.101 Z M 144.015,79.3772L 39.8861,183.491L 39.8861,281.429L 119.661,281.429L 119.661,198.741L 168.142,198.741L 168.142,281.429L 249.234,281.429L 249.234,184.604L 144.015,79.3772 Z "
+                                      Fill="{StaticResource AwShopperTopBarButtonForegroundBrush}">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="0.15" ScaleY="0.15" />
+                                            <TranslateTransform X="22" Y="26" />
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Canvas>
+                        </Viewbox>
+                        <TextBlock x:Name="TextLabel"
+                                   Width="88"
+                                   MaxHeight="32"
+                                   Margin="0,0,2,10"
+                                   FontSize="12"
+                                   Style="{StaticResource BasicTextStyle}"
+                                   Text="{TemplateBinding Content}"
+                                   TextAlignment="Center"
+                                   TextTrimming="WordEllipsis" />
+                        <Rectangle x:Name="FocusVisualWhite"
+                                   Width="100"
+                                   Height="120"
+                                   Margin="0,-120,0,0"
+                                   IsHitTestVisible="False"
+                                   Opacity="0"
+                                   Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}"
+                                   StrokeDashArray="1,1"
+                                   StrokeDashOffset="1.5"
+                                   StrokeEndLineCap="Square" />
+                        <Rectangle x:Name="FocusVisualBlack"
+                                   Width="100"
+                                   Height="120"
+                                   Margin="0,-120,0,0"
+                                   IsHitTestVisible="False"
+                                   Opacity="0"
+                                   Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}"
+                                   StrokeDashArray="1,1"
+                                   StrokeDashOffset="0.5"
+                                   StrokeEndLineCap="Square" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="ApplicationViewStates">
+                                <VisualState x:Name="DefaultLayout" />
+                                <VisualState x:Name="PortraitLayout" />
+                                <VisualState x:Name="MinimalLayout">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TextLabel" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="ControlRoot"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="0.7" />
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="ControlRoot"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="0.7" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconGlyph" Storyboard.TargetProperty="Fill">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AWShopperItemForegroundBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconCanvas" Storyboard.TargetProperty="(Panel.Background)">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonBackgroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconGlyph" Storyboard.TargetProperty="Fill">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AWShopperFlyoutContentBackground}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconCanvas" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconGlyph" Storyboard.TargetProperty="Fill">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemDisabledForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconCanvas" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemDisabledForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TextLabel" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemDisabledForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="FocusVisualWhite"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="FocusVisualBlack"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused" />
+                                <VisualState x:Name="PointerFocused" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CartStyle" TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <StackPanel x:Name="ControlRoot" VerticalAlignment="Top">
+                        <StackPanel.RenderTransform>
+                            <ScaleTransform />
+                        </StackPanel.RenderTransform>
+                        <Viewbox x:Name="IconViewBox"
+                                 Width="86.4"
+                                 Height="86.4"
+                                 Stretch="Uniform">
+                            <Canvas x:Name="IconCanvas"
+                                    Width="86.4"
+                                    Height="86.4"
+                                    Background="{StaticResource AwShopperTopBarButtonBackgroundBrush}">
+                                <Path x:Name="IconGlyph"
+                                      Data="F1 M 372.601,181.645L 364.733,181.645L 363.407,175.361C 363.161,174.768 362.819,174.233 362.681,173.593L 338.831,60.2533C 338.792,60.192 338.845,60.108 338.831,60.0707L 336.244,47.9467L 348.789,47.9467L 359.097,47.9467L 568.193,47.9467L 576.223,12.1387L 584.832,12.1387L 587.523,12.1387L 629.964,12.1387L 632.588,12.1387L 642.752,12.1387L 642.752,32.5213L 632.588,32.5213L 629.964,32.5213L 592.823,32.5213L 559.036,173.624L 550.945,215.913C 550.573,217.804 549.62,219.367 548.384,220.716C 553.027,225.077 555.971,231.195 555.971,238.057C 555.971,251.279 545.319,262 532.067,262C 518.821,262 508.1,251.279 508.1,238.057C 508.1,232.785 510.129,228.151 512.988,224.187L 413.115,224.187C 416.004,228.151 418.055,232.785 418.055,238.057C 418.055,251.279 407.319,262 394.044,262C 380.867,262 370.147,251.279 370.147,238.057C 370.147,232.785 372.205,228.151 375.087,224.187L 356.887,224.187C 356.855,224.187 356.756,224.132 356.688,224.132L 346.325,224.132L 346.325,203.804L 356.887,203.804L 362.681,203.804L 532.463,203.804L 536.725,181.676L 372.655,181.676L 372.601,181.645 Z "
+                                      Fill="{StaticResource AwShopperTopBarButtonForegroundBrush}"
+                                      Stretch="Fill">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="0.15" ScaleY="0.15" />
+                                            <TranslateTransform X="22" Y="26" />
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Canvas>
+                        </Viewbox>
+                        <TextBlock x:Name="TextLabel"
+                                   Width="88"
+                                   MaxHeight="32"
+                                   Margin="0,0,2,10"
+                                   FontSize="12"
+                                   Style="{StaticResource BasicTextStyle}"
+                                   Text="{TemplateBinding Content}"
+                                   TextAlignment="Center"
+                                   TextTrimming="WordEllipsis" />
+                        <Rectangle x:Name="FocusVisualWhite"
+                                   Width="100"
+                                   Height="120"
+                                   Margin="0,-120,0,0"
+                                   IsHitTestVisible="False"
+                                   Opacity="0"
+                                   Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}"
+                                   StrokeDashArray="1,1"
+                                   StrokeDashOffset="1.5"
+                                   StrokeEndLineCap="Square" />
+                        <Rectangle x:Name="FocusVisualBlack"
+                                   Width="100"
+                                   Height="120"
+                                   Margin="0,-120,0,0"
+                                   IsHitTestVisible="False"
+                                   Opacity="0"
+                                   Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}"
+                                   StrokeDashArray="1,1"
+                                   StrokeDashOffset="0.5"
+                                   StrokeEndLineCap="Square" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="ApplicationViewStates">
+                                <VisualState x:Name="DefaultLayout" />
+                                <VisualState x:Name="PortraitLayout" />
+                                <VisualState x:Name="MinimalLayout">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TextLabel" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="ControlRoot"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="0.7" />
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="ControlRoot"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="0.7" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconGlyph" Storyboard.TargetProperty="Fill">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AWShopperItemForegroundBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconCanvas" Storyboard.TargetProperty="(Panel.Background)">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonBackgroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconGlyph" Storyboard.TargetProperty="Fill">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AWShopperFlyoutContentBackground}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconCanvas" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconGlyph" Storyboard.TargetProperty="Fill">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemDisabledForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconCanvas" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemDisabledForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TextLabel" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemDisabledForegroundThemeBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="FocusVisualWhite"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                        <DoubleAnimation Duration="0"
+                                                         Storyboard.TargetName="FocusVisualBlack"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused" />
+                                <VisualState x:Name="PointerFocused" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  Bottom AppBar style  -->
+    <Style x:Name="AppBarStyle" TargetType="AppBar">
+        <Setter Property="Background" Value="{StaticResource AppBarBackgroundThemeBrush}" />
+        <Setter Property="Opacity" Value="0.9" />
+        <Setter Property="Padding" Value="10,0,10,0" />
+        <Setter Property="Height" Value="Auto" />
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource AWShopperHighlightButtonForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AWShopperHighlightButtonForegroundBrush}" />
+    </Style>
+
+    <Style x:Key="AWShopperFlyoutStyle" TargetType="FlyoutPresenter">
+        <Setter Property="Padding" Value="0" />
+    </Style>
+</ResourceDictionary>
