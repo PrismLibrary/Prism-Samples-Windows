@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +14,7 @@ namespace AdventureWorks.UILogic.Tests.Repositories
     public class ShoppingCartRepositoryFixture
     {
         [TestMethod]
-        public void CartItemUpdatedEventRaised_WhenProductAdded()
+        public async void CartItemUpdatedEventRaised_WhenProductAdded()
         {
             var shoppingCartItemUpdatedRaised = false;
             var shoppingCartService = new MockShoppingCartService();
@@ -29,13 +29,13 @@ namespace AdventureWorks.UILogic.Tests.Repositories
             eventAggregator.GetEventDelegate = type => shoppingCartItemUpdatedEvent;
             var target = new ShoppingCartRepository(shoppingCartService, new MockAccountService(), eventAggregator, new MockSessionStateService());
 
-            target.AddProductToShoppingCartAsync("TestProductId");
+            await target.AddProductToShoppingCartAsync("TestProductId");
 
             Assert.IsTrue(shoppingCartItemUpdatedRaised);
         }
 
         [TestMethod]
-        public void CartItemUpdatedEventRaised_WhenProductRemoved()
+        public async void CartItemUpdatedEventRaised_WhenProductRemoved()
         {
             var shoppingCartItemUpdatedRaised = false;
             var shoppingCartService = new MockShoppingCartService();
@@ -50,7 +50,7 @@ namespace AdventureWorks.UILogic.Tests.Repositories
             eventAggregator.GetEventDelegate = type => shoppingCartItemUpdatedEvent;
             var target = new ShoppingCartRepository(shoppingCartService, new MockAccountService(), eventAggregator, new MockSessionStateService());
 
-            target.RemoveProductFromShoppingCartAsync("TestProductId");
+            await target.RemoveProductFromShoppingCartAsync("TestProductId");
 
             Assert.IsTrue(shoppingCartItemUpdatedRaised);
         }

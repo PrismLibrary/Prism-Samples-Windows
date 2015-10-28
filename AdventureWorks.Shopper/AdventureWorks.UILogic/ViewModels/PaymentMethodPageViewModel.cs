@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Repositories;
 using AdventureWorks.UILogic.Services;
@@ -112,14 +110,14 @@ namespace AdventureWorks.UILogic.ViewModels
 
         private void DisplayValidationErrors(ModelValidationResult modelValidationResults)
         {
-            var errors = new Dictionary<string, Collection<string>>();
+            var errors = new Dictionary<string, ReadOnlyCollection<string>>();
 
             // Property keys format: address.{Propertyname}
             foreach (var propkey in modelValidationResults.ModelState.Keys)
             {
                 string propertyName = propkey.Substring(propkey.IndexOf('.') + 1); // strip off order. prefix
 
-                errors.Add(propertyName, new Collection<string>(modelValidationResults.ModelState[propkey]));
+                errors.Add(propertyName, new ReadOnlyCollection<string>(modelValidationResults.ModelState[propkey]));
             }
 
             if (errors.Count > 0)

@@ -1,13 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Xaml;
 
 namespace AdventureWorks.Shopper.Behaviors
 {
-    using AdventureWorks.UILogic;
+    using Prism.Windows.Validation;
 
     // Documentation on validating user input is at http://go.microsoft.com/fwlink/?LinkID=288817&clcid=0x409
     public class HighlightFormFieldOnErrors : Behavior<FrameworkElement>

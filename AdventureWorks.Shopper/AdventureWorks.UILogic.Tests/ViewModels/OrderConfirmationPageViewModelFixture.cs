@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+
 
 using AdventureWorks.UILogic.Tests.Mocks;
 using AdventureWorks.UILogic.ViewModels;
@@ -17,7 +17,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
     public class OrderConfirmationPageViewModelFixture
     {
         [TestMethod]
-        public async Task OnNavigatedTo_ClearsNavigationHistory()
+        public void OnNavigatedTo_ClearsNavigationHistory()
         {
             bool clearHistoryCalled = false;
             var navigationService = new MockNavigationService();

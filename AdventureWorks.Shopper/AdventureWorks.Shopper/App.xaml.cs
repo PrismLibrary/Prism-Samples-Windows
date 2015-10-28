@@ -1,6 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
-using AdventureWorks.Shopper.Services;
+﻿using AdventureWorks.Shopper.Services;
 using AdventureWorks.Shopper.Views;
 using AdventureWorks.UILogic;
 using AdventureWorks.UILogic.Models;

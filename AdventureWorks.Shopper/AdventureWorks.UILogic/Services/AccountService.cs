@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using AdventureWorks.UILogic.Models;
 using Prism.Windows.AppModel;
 using System;

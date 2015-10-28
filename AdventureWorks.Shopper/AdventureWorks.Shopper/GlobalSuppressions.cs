@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable", Scope = "type", Target = "AdventureWorks.Shopper.App", Justification = "UnityContainer lifetime must match app lifetime. Cannot be disposed.")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2211:NonConstantFieldsShouldNotBeVisible", Scope = "member", Target = "AdventureWorks.Shopper.Behaviors.ChangeVisualState.#GoToStateProperty", Justification = "Static field always accessed from UI thread.")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2211:NonConstantFieldsShouldNotBeVisible", Scope = "member", Target = "AdventureWorks.Shopper.Behaviors.ComboBoxKeyboardSelection.#EnabledProperty", Justification = "Static field always accessed from UI thread.")]

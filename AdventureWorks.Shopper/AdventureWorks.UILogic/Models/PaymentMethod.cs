@@ -1,6 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using AdventureWorks.UILogic.Services;
+using Prism.Windows.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventureWorks.UILogic.Models
 {
@@ -34,47 +34,47 @@ namespace AdventureWorks.UILogic.Models
             set { SetProperty(ref _id, value); }
         }
 
-        ////[Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
-        ////[StringLength(20, MinimumLength = 4, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "CardNumberInvalidLengthErrorMessage")]
+        [Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
+        [StringLength(20, MinimumLength = 4, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "CardNumberInvalidLengthErrorMessage")]
         public string CardNumber
         {
             get { return _cardNumber; }
             set { SetProperty(ref _cardNumber, value); }
         }
 
-        ////[Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
-        ////[RegularExpression(NAMES_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RegexErrorMessage")]
+        [Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
+        [RegularExpression(NAMES_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RegexErrorMessage")]
         public string CardholderName
         {
             get { return _cardholderName; }
             set { SetProperty(ref _cardholderName, value); }
         }
 
-        ////[Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
-        ////[RegularExpression(MONTHNUMBERS_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "CardMonthInvalid")]
+        [Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
+        [RegularExpression(MONTHNUMBERS_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "CardMonthInvalid")]
         public string ExpirationMonth
         {
             get { return _expirationMonth; }
             set { SetProperty(ref _expirationMonth, value); }
         }
 
-        ////[Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
-        ////[RegularExpression(YEARNUMBERS_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "CardYearInvalid")]
+        [Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
+        [RegularExpression(YEARNUMBERS_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "CardYearInvalid")]
         public string ExpirationYear
         {
             get { return _expirationYear; }
             set { SetProperty(ref _expirationYear, value); }
         }
 
-        ////[RegularExpression(NUMBERS_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RegexErrorMessage")]
+        [RegularExpression(NUMBERS_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RegexErrorMessage")]
         public string Phone
         {
             get { return _phone; }
             set { SetProperty(ref _phone, value); }
         }
 
-        ////[Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
-        ////[RegularExpression(NUMBERS_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RegexErrorMessage")]
+        [Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RequiredErrorMessage")]
+        [RegularExpression(NUMBERS_REGEX_PATTERN, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = "RegexErrorMessage")]
         public string CardVerificationCode
         {
             get { return _cardVerificationCode; }
