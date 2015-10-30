@@ -2,26 +2,24 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:designViewModels="using:SplitViewSample.DesignViewModels"
       xmlns:local="using:SplitViewSample.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:prismMvvm="using:Prism.Windows.Mvvm"
-      d:DataContext="{d:DesignInstance designViewModels:MenuPageDesignViewModel,
-                                       IsDesignTimeCreatable=True}"
+      xmlns:viewModels="using:SplitViewSample.ViewModels"
       prismMvvm:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="MenuItemTemplate">
+        <DataTemplate x:Key="MenuItemTemplate" x:DataType="viewModels:MenuItemViewModel">
             <Grid>
                 <Button AutomationProperties.Name="{Binding DisplayName}"
-                        Command="{Binding Command}"
+                        Command="{x:Bind Path=Command}"
                         Style="{StaticResource SplitViewMenuButtonStyle}"
-                        ToolTipService.ToolTip="{Binding DisplayName}">
+                        ToolTipService.ToolTip="{x:Bind Path=DisplayName}">
                     <StackPanel Orientation="Horizontal">
-                        <FontIcon Glyph="{Binding FontIcon}" Style="{StaticResource SplitViewMenuFontIconStyle}" />
+                        <FontIcon Glyph="{x:Bind Path=FontIcon}" Style="{StaticResource SplitViewMenuFontIconStyle}" />
                         <TextBlock AutomationProperties.AccessibilityView="Raw"
                                    Style="{StaticResource SplitViewMenuItemTextStyle}"
-                                   Text="{Binding DisplayName}" />
+                                   Text="{x:Bind Path=DisplayName}" />
                     </StackPanel>
                 </Button>
             </Grid>
@@ -32,6 +30,6 @@
         <ItemsControl Margin="0,48,0,0"
                       IsTabStop="False"
                       ItemTemplate="{StaticResource MenuItemTemplate}"
-                      ItemsSource="{Binding Commands}" />
+                      ItemsSource="{x:Bind Path=ConcreteDataContext.Commands}" />
     </Grid>
 </Page>

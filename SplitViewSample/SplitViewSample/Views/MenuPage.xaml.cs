@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using SplitViewSample.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -20,11 +23,31 @@ namespace SplitViewSample.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MenuPage : Page
+    public sealed partial class MenuPage : Page, INotifyPropertyChanged
     {
         public MenuPage()
         {
             this.InitializeComponent();
+            this.DataContextChanged += MenuPage_DataContextChanged;
+        }
+
+        public MenuPageViewModel ConcreteDataContext
+        {
+            get
+            {
+                return DataContext as MenuPageViewModel;
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void MenuPage_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+        {
+            var propertyChanged = PropertyChanged;
+            if (propertyChanged != null)
+            {
+                propertyChanged(this, new PropertyChangedEventArgs(nameof(ConcreteDataContext)));
+            }
         }
     }
 }

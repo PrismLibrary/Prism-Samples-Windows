@@ -1,6 +1,8 @@
 ﻿using Prism.Windows.Mvvm;
+using SplitViewSample.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -21,11 +23,31 @@ namespace SplitViewSample.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : SessionStateAwarePage
+    public sealed partial class MainPage : SessionStateAwarePage, INotifyPropertyChanged
     {
         public MainPage()
         {
             this.InitializeComponent();
+            this.DataContextChanged += MainPage_DataContextChanged;
+        }
+
+        public MainPageViewModel ConcreteDataContext
+        {
+            get
+            {
+                return DataContext as MainPageViewModel;
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void MainPage_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+        {
+            var propertyChanged = PropertyChanged;
+            if (propertyChanged != null)
+            {
+                propertyChanged(this, new PropertyChangedEventArgs(nameof(ConcreteDataContext)));
+            }
         }
     }
 }

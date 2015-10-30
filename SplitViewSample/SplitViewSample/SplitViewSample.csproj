@@ -100,9 +100,6 @@
     <Compile Include="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DesignViewModels\MenuPageDesignViewModel.cs" />
-    <Compile Include="DesignViewModels\MainPageDesignViewModel.cs" />
-    <Compile Include="DesignViewModels\SecondPageDesignViewModel.cs" />
     <Compile Include="PageTokens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
