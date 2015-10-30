@@ -27,7 +27,27 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationMenuBackgroundThemeBrush}">
-        <ItemsControl Margin="0,48,0,0"
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="MenuStates">
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1280" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="menuItemsControl.Margin" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Medium">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Narrow" />
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <ItemsControl x:Name="menuItemsControl"
+                      Margin="0,48,0,0"
                       IsTabStop="False"
                       ItemTemplate="{StaticResource MenuItemTemplate}"
                       ItemsSource="{x:Bind Path=ConcreteDataContext.Commands}" />
