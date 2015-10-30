@@ -1,5 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-
 using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Repositories;
 using AdventureWorks.UILogic.Services;
@@ -61,7 +59,7 @@ namespace AdventureWorks.UILogic.ViewModels
                 if (e.NavigationMode == NavigationMode.Refresh)
                 {
                     // Restore the errors collection manually
-                    var errorsCollection = RetrieveEntityStateValue<IDictionary<string, Collection<string>>>("errorsCollection", viewState);
+                    var errorsCollection = RetrieveEntityStateValue<IDictionary<string, ReadOnlyCollection<string>>>("errorsCollection", viewState);
 
                     if (errorsCollection != null)
                     {

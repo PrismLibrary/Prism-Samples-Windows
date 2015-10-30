@@ -117,12 +117,10 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindableValidator.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ICredentialStore.cs" />
     <Compile Include="IFlyoutViewModel.cs" />
-    <Compile Include="IValidatableBindableBase.cs" />
     <Compile Include="Misc\PrismConstants.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressType.cs" />
@@ -178,7 +176,6 @@
     <Compile Include="Services\ShippingMethodServiceProxy.cs" />
     <Compile Include="Services\ShoppingCartServiceProxy.cs" />
     <Compile Include="Services\TemporaryFolderCacheService.cs" />
-    <Compile Include="ValidatableBindableBase.cs" />
     <Compile Include="ViewModels\BillingAddressPageViewModel.cs" />
     <Compile Include="ViewModels\BillingAddressUserControlViewModel.cs" />
     <Compile Include="ViewModels\CategoryPageViewModel.cs" />

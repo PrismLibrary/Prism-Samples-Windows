@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+﻿
 
 namespace AdventureWorks.UILogic.Tests
 {
@@ -8,6 +8,7 @@ namespace AdventureWorks.UILogic.Tests
 
     using Microsoft.Practices.Prism.StoreApps.Tests.Mocks;
     using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+    using Prism.Windows.Validation;
 
     [TestClass]
     public class BindableValidatorFixture
