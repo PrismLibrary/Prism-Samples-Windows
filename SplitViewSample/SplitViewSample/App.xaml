@@ -8,7 +8,6 @@
     <prismUnity:PrismUnityApplication.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:///Themes/AppShellStyles.xaml" />
                 <ResourceDictionary Source="ms-appx:///Themes/SplitViewSampleStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
