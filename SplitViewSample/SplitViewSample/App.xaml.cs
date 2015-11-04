@@ -1,11 +1,16 @@
-﻿using Prism.Unity.Windows;
+﻿using Microsoft.Practices.Unity;
+using Prism.Unity.Windows;
+using Prism.Windows.AppModel;
+using SplitViewSample.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -15,20 +20,15 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using System.Threading.Tasks;
-using SplitViewSample.Views;
-using Prism.Windows.AppModel;
-using Windows.ApplicationModel.Resources;
-using Microsoft.Practices.Unity;
 
 namespace SplitViewSample
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : PrismUnityApplication
+    public sealed partial class App : PrismUnityApplication
     {
-        private readonly AppShell _appShell;
+        private AppShell _appShell;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -36,8 +36,7 @@ namespace SplitViewSample
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-            _appShell = new AppShell();
+            InitializeComponent();
         }
 
         protected override UIElement CreateShell(Frame rootFrame)
@@ -47,6 +46,11 @@ namespace SplitViewSample
 
         protected override Frame OnCreateRootFrame()
         {
+            if (_appShell == null)
+            {
+                _appShell = new AppShell();
+            }
+
             return _appShell.ContentFrame;
         }
 
@@ -58,7 +62,7 @@ namespace SplitViewSample
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            _appShell.MenuFrame.Navigate(typeof(MenuPage));
+            _appShell.MenuPane = new MenuView();
             NavigationService.Navigate(PageTokens.MainPage, null);
             return Task.FromResult(true);
         }

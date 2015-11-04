@@ -2,7 +2,7 @@
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Prism.Unity": "6.1.1",
-    "StyleCop.MSBuild": "4.7.49.1"
+    "StyleCop.Analyzers": "1.0.0-beta015"
   },
   "frameworks": {
     "uap10.0": {}

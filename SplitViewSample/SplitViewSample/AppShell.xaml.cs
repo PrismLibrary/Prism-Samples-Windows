@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SplitViewSample.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,7 +15,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace SplitViewSample
 {
     /// <summary>
@@ -24,7 +24,7 @@ namespace SplitViewSample
     {
         public AppShell()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         public Frame ContentFrame
@@ -35,11 +35,16 @@ namespace SplitViewSample
             }
         }
 
-        public Frame MenuFrame
+        public UIElement MenuPane
         {
             get
             {
-                return menuFrame;
+                return rootSplitView.Pane;
+            }
+
+            set
+            {
+                rootSplitView.Pane = value;
             }
         }
     }

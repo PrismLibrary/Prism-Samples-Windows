@@ -3,15 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:SplitViewSample"
+      xmlns:views="using:SplitViewSample.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/AppShellStyles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
@@ -40,9 +34,6 @@
         </VisualStateManager.VisualStateGroups>
 
         <SplitView x:Name="rootSplitView" Style="{StaticResource MenuSplitViewStyle}">
-            <SplitView.Pane>
-                <Frame x:Name="menuFrame" />
-            </SplitView.Pane>
             <Frame x:Name="contentFrame" />
         </SplitView>
 

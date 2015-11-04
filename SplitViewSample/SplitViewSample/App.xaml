@@ -6,6 +6,11 @@
                                   RequestedTheme="Light">
 
     <prismUnity:PrismUnityApplication.Resources>
-        <ResourceDictionary Source="Themes/SplitViewSampleStyles.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Themes/AppShellStyles.xaml" />
+                <ResourceDictionary Source="ms-appx:///Themes/SplitViewSampleStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </prismUnity:PrismUnityApplication.Resources>
 </prismUnity:PrismUnityApplication>

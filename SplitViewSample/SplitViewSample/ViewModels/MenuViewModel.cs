@@ -11,17 +11,16 @@ using System.Threading.Tasks;
 
 namespace SplitViewSample.ViewModels
 {
-    public class MenuPageViewModel : ViewModelBase
+    public class MenuViewModel : ViewModelBase
     {
         private INavigationService _navigationService;
         private bool _canNavigateToMain = false;
         private bool _canNavigateToSecond = true;
 
-        public MenuPageViewModel(INavigationService navigationService, IResourceLoader resourceLoader)
+        public MenuViewModel(INavigationService navigationService, IResourceLoader resourceLoader)
         {
             // TODO: Add ability to indicate which page your on by listening for navigation events once the NuGet package has been updated. Change CanNavigate to use whether or not your on that page to return false.
-            // As-is, if navigation occurs via the back button, we won't know and can't update the _canNavigate value 
-
+            // As-is, if navigation occurs via the back button, we won't know and can't update the _canNavigate value
             _navigationService = navigationService;
 
             Commands = new ObservableCollection<MenuItemViewModel>

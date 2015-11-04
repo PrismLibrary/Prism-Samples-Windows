@@ -1,4 +1,4 @@
-﻿<Page x:Class="SplitViewSample.Views.MenuPage"
+﻿<UserControl x:Class="SplitViewSample.Views.MenuView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,9 +6,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:prismMvvm="using:Prism.Windows.Mvvm"
       xmlns:viewModels="using:SplitViewSample.ViewModels"
-      prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+             prismMvvm:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d">
-    <Page.Resources>
+    <UserControl.Resources>
         <DataTemplate x:Key="MenuItemTemplate" x:DataType="viewModels:MenuItemViewModel">
             <Grid>
                 <Button AutomationProperties.Name="{Binding DisplayName}"
@@ -24,7 +24,7 @@
                 </Button>
             </Grid>
         </DataTemplate>
-    </Page.Resources>
+    </UserControl.Resources>
 
     <Grid Background="{ThemeResource ApplicationMenuBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
@@ -52,4 +52,4 @@
                       ItemTemplate="{StaticResource MenuItemTemplate}"
                       ItemsSource="{x:Bind Path=ConcreteDataContext.Commands}" />
     </Grid>
-</Page>
+</UserControl>

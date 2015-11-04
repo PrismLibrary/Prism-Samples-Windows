@@ -16,32 +16,27 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SplitViewSample.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class MenuPage : Page, INotifyPropertyChanged
+    public sealed partial class MenuView : UserControl, INotifyPropertyChanged
     {
-        public MenuPage()
+        public MenuView()
         {
-            this.InitializeComponent();
-            this.DataContextChanged += MenuPage_DataContextChanged;
-        }
-
-        public MenuPageViewModel ConcreteDataContext
-        {
-            get
-            {
-                return DataContext as MenuPageViewModel;
-            }
+            InitializeComponent();
+            DataContextChanged += MenuControl_DataContextChanged;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void MenuPage_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+        public MenuViewModel ConcreteDataContext
+        {
+            get
+            {
+                return DataContext as MenuViewModel;
+            }
+        }
+
+        private void MenuControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
             var propertyChanged = PropertyChanged;
             if (propertyChanged != null)

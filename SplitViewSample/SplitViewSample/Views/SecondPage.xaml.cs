@@ -17,7 +17,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SplitViewSample.Views
 {
     /// <summary>
@@ -27,9 +26,11 @@ namespace SplitViewSample.Views
     {
         public SecondPage()
         {
-            this.InitializeComponent();
-            this.DataContextChanged += SecondPage_DataContextChanged;
+            InitializeComponent();
+            DataContextChanged += SecondPage_DataContextChanged;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public SecondPageViewModel ConcreteDataContext
         {
@@ -38,8 +39,6 @@ namespace SplitViewSample.Views
                 return DataContext as SecondPageViewModel;
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private void SecondPage_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
