@@ -35,6 +35,9 @@
 
         <SplitView x:Name="rootSplitView" Style="{StaticResource MenuSplitViewStyle}">
             <Frame x:Name="contentFrame" />
+            <SplitView.Pane>
+                <views:MenuView/>
+            </SplitView.Pane>
         </SplitView>
 
         <!--  Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence.  -->
