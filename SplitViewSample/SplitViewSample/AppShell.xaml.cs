@@ -27,25 +27,14 @@ namespace SplitViewSample
             InitializeComponent();
         }
 
-        public Frame ContentFrame
+        public void SetContentFrame(Frame frame)
         {
-            get
-            {
-                return contentFrame;
-            }
+            rootSplitView.Content = frame;
         }
 
-        public UIElement MenuPane
+        public void SetMenuPaneContent(UIElement content)
         {
-            get
-            {
-                return rootSplitView.Pane;
-            }
-
-            set
-            {
-                rootSplitView.Pane = value;
-            }
+            rootSplitView.Pane = content;
         }
     }
 }
