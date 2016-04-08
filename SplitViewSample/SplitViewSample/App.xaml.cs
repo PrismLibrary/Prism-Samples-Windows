@@ -37,7 +37,7 @@ namespace SplitViewSample
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            NavigationService.Navigate(PageTokens.MainPage, null);
+            NavigationService.Navigate(PageTokens.Main.ToString(), null);
             return Task.FromResult(true);
         }
     }

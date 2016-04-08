@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Windows.AppModel;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
@@ -13,59 +14,65 @@ namespace SplitViewSample.ViewModels
 {
     public class MenuViewModel : ViewModelBase
     {
+        private Dictionary<PageTokens, bool> _canNavigateLookup;
+        private PageTokens _currentPageToken;
+        private IEventAggregator _eventAggregator;
         private INavigationService _navigationService;
-        private bool _canNavigateToMain = false;
-        private bool _canNavigateToSecond = true;
 
-        public MenuViewModel(INavigationService navigationService, IResourceLoader resourceLoader)
+        public MenuViewModel(INavigationService navigationService, IResourceLoader resourceLoader, IEventAggregator eventAggregator)
         {
-            // TODO: Add ability to indicate which page your on by listening for navigation events once the NuGet package has been updated. Change CanNavigate to use whether or not your on that page to return false.
-            // As-is, if navigation occurs via the back button, we won't know and can't update the _canNavigate value
             _navigationService = navigationService;
+            _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<NavigationStateChangedEvent>().Subscribe(OnNavigationStateChanged);
 
             Commands = new ObservableCollection<MenuItemViewModel>
             {
-                new MenuItemViewModel { DisplayName = resourceLoader.GetString("MainPageMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(NavigateToMainPage, CanNavigateToMainPage) },
-                new MenuItemViewModel { DisplayName = resourceLoader.GetString("SecondPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(NavigateToSecondPage, CanNavigateToSecondPage) }
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("MainPageMenuItemDisplayName"), FontIcon = "\ue15f", Command = new DelegateCommand(() => NavigateToPage(PageTokens.Main), () => CanNavigateToPage(PageTokens.Main)) },
+                new MenuItemViewModel { DisplayName = resourceLoader.GetString("SecondPageMenuItemDisplayName"), FontIcon = "\ue19f", Command = new DelegateCommand(() => NavigateToPage(PageTokens.Second), () => CanNavigateToPage(PageTokens.Second)) }
             };
+
+            _canNavigateLookup = new Dictionary<PageTokens, bool>();
+
+            foreach (PageTokens pageToken in Enum.GetValues(typeof(PageTokens)))
+            {
+                _canNavigateLookup.Add(pageToken, true);
+            }
         }
 
         public ObservableCollection<MenuItemViewModel> Commands { get; set; }
 
-        private void NavigateToMainPage()
+        private void OnNavigationStateChanged(NavigationStateChangedEventArgs args)
         {
-            if (CanNavigateToMainPage())
+            PageTokens currentPage;
+            if (Enum.TryParse(args.Sender.Content.GetType().Name.Replace("Page", string.Empty), out currentPage))
             {
-                if (_navigationService.Navigate(PageTokens.MainPage, null))
+                UpdateCanNavigateLookup(currentPage);
+                RaiseCanExecuteChanged();
+            }
+        }
+
+        private void NavigateToPage(PageTokens pageToken)
+        {
+            if (CanNavigateToPage(pageToken))
+            {
+                if (_navigationService.Navigate(pageToken.ToString(), null))
                 {
-                    _canNavigateToMain = false;
-                    _canNavigateToSecond = true;
+                    UpdateCanNavigateLookup(pageToken);
                     RaiseCanExecuteChanged();
                 }
             }
         }
 
-        private bool CanNavigateToMainPage()
+        private bool CanNavigateToPage(PageTokens pageToken)
         {
-            return _canNavigateToMain;
+            return _canNavigateLookup[pageToken];
         }
 
-        private void NavigateToSecondPage()
+        private void UpdateCanNavigateLookup(PageTokens navigatedTo)
         {
-            if (CanNavigateToSecondPage())
-            {
-                if (_navigationService.Navigate(PageTokens.SecondPage, null))
-                {
-                    _canNavigateToMain = true;
-                    _canNavigateToSecond = false;
-                    RaiseCanExecuteChanged();
-                }
-            }
-        }
-
-        private bool CanNavigateToSecondPage()
-        {
-            return _canNavigateToSecond;
+            _canNavigateLookup[_currentPageToken] = true;
+            _canNavigateLookup[navigatedTo] = false;
+            _currentPageToken = navigatedTo;
         }
 
         private void RaiseCanExecuteChanged()
