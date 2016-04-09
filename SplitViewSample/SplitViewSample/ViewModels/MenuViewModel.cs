@@ -16,14 +16,12 @@ namespace SplitViewSample.ViewModels
     {
         private Dictionary<PageTokens, bool> _canNavigateLookup;
         private PageTokens _currentPageToken;
-        private IEventAggregator _eventAggregator;
         private INavigationService _navigationService;
 
         public MenuViewModel(INavigationService navigationService, IResourceLoader resourceLoader, IEventAggregator eventAggregator)
         {
             _navigationService = navigationService;
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<NavigationStateChangedEvent>().Subscribe(OnNavigationStateChanged);
+            eventAggregator.GetEvent<NavigationStateChangedEvent>().Subscribe(OnNavigationStateChanged);
 
             Commands = new ObservableCollection<MenuItemViewModel>
             {
@@ -43,10 +41,10 @@ namespace SplitViewSample.ViewModels
 
         private void OnNavigationStateChanged(NavigationStateChangedEventArgs args)
         {
-            PageTokens currentPage;
-            if (Enum.TryParse(args.Sender.Content.GetType().Name.Replace("Page", string.Empty), out currentPage))
+            PageTokens currentPageToken;
+            if (Enum.TryParse(args.Sender.Content.GetType().Name.Replace("Page", string.Empty), out currentPageToken))
             {
-                UpdateCanNavigateLookup(currentPage);
+                UpdateCanNavigateLookup(currentPageToken);
                 RaiseCanExecuteChanged();
             }
         }
