@@ -14,14 +14,17 @@ namespace SplitViewSample.ViewModels
 {
     public class MenuViewModel : ViewModelBase
     {
+        private const string CurrentPageTokenKey = "CurrentPageToken";
         private Dictionary<PageTokens, bool> _canNavigateLookup;
         private PageTokens _currentPageToken;
         private INavigationService _navigationService;
+        private ISessionStateService _sessionStateService;
 
-        public MenuViewModel(INavigationService navigationService, IResourceLoader resourceLoader, IEventAggregator eventAggregator)
+        public MenuViewModel(IEventAggregator eventAggregator, INavigationService navigationService, IResourceLoader resourceLoader, ISessionStateService sessionStateService)
         {
-            _navigationService = navigationService;
             eventAggregator.GetEvent<NavigationStateChangedEvent>().Subscribe(OnNavigationStateChanged);
+            _navigationService = navigationService;
+            _sessionStateService = sessionStateService;
 
             Commands = new ObservableCollection<MenuItemViewModel>
             {
@@ -35,6 +38,17 @@ namespace SplitViewSample.ViewModels
             {
                 _canNavigateLookup.Add(pageToken, true);
             }
+
+            if (_sessionStateService.SessionState.ContainsKey(CurrentPageTokenKey))
+            {
+                // Resuming, so update the menu to reflect the current page correctly
+                PageTokens currentPageToken;
+                if (Enum.TryParse(_sessionStateService.SessionState[CurrentPageTokenKey].ToString(), out currentPageToken))
+                {
+                    UpdateCanNavigateLookup(currentPageToken);
+                    RaiseCanExecuteChanged();
+                }
+            }
         }
 
         public ObservableCollection<MenuItemViewModel> Commands { get; set; }
@@ -44,6 +58,7 @@ namespace SplitViewSample.ViewModels
             PageTokens currentPageToken;
             if (Enum.TryParse(args.Sender.Content.GetType().Name.Replace("Page", string.Empty), out currentPageToken))
             {
+                _sessionStateService.SessionState[CurrentPageTokenKey] = currentPageToken.ToString();
                 UpdateCanNavigateLookup(currentPageToken);
                 RaiseCanExecuteChanged();
             }
