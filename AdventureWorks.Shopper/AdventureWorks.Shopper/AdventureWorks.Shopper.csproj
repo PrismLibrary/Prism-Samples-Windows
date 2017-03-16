@@ -346,11 +346,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
-      <Name>Behaviors SDK %28XAML%29</Name>
-    </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AdventureWorks.UILogic\AdventureWorks.UILogic.csproj">
       <Project>{30061dc3-9d88-44a0-bdbe-01ce1f51d53d}</Project>
       <Name>AdventureWorks.UILogic</Name>
