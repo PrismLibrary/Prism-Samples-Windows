@@ -50,10 +50,10 @@ namespace AdventureWorks.UILogic.ViewModels
             _checkoutDataRepository = checkoutDataRepository;
             _orderRepository = orderRepository;
 
-            CheckoutCommand = DelegateCommand.FromAsyncHandler(CheckoutAsync, CanCheckout);
-            RemoveCommand = DelegateCommand<ShoppingCartItemViewModel>.FromAsyncHandler(Remove);
-            IncrementCountCommand = DelegateCommand.FromAsyncHandler(IncrementCount);
-            DecrementCountCommand = DelegateCommand.FromAsyncHandler(DecrementCount, CanDecrementCount);
+            CheckoutCommand = DelegateCommandHack.FromAsyncHandler(CheckoutAsync, CanCheckout);
+            RemoveCommand = DelegateCommandHack<ShoppingCartItemViewModel>.FromAsyncHandler(Remove);
+            IncrementCountCommand = DelegateCommandHack.FromAsyncHandler(IncrementCount);
+            DecrementCountCommand = DelegateCommandHack.FromAsyncHandler(DecrementCount, CanDecrementCount);
 
             // Subscribe to the ShoppingCartUpdated event
             if (eventAggregator != null)
@@ -128,7 +128,7 @@ namespace AdventureWorks.UILogic.ViewModels
                         IsBottomAppBarOpened = false;
                     }
 
-                    OnPropertyChanged("IsItemSelected");
+                    RaisePropertyChanged("IsItemSelected");
                 }
             }
         }
@@ -160,7 +160,7 @@ namespace AdventureWorks.UILogic.ViewModels
                 // AppBar.IsOpen property doesn't notify when the property is set.
                 // See http://go.microsoft.com/fwlink/?LinkID=288840
                 _isBottomAppBarOpened = value;
-                OnPropertyChanged("IsBottomAppBarOpened");
+                RaisePropertyChanged("IsBottomAppBarOpened");
             }
         }
 
@@ -214,9 +214,9 @@ namespace AdventureWorks.UILogic.ViewModels
                     }
 
                     CheckoutCommand.RaiseCanExecuteChanged();
-                    OnPropertyChanged("FullPrice");
-                    OnPropertyChanged("TotalDiscount");
-                    OnPropertyChanged("TotalPrice");
+                    RaisePropertyChanged("FullPrice");
+                    RaisePropertyChanged("TotalDiscount");
+                    RaisePropertyChanged("TotalPrice");
                 }
             }
             catch (Exception ex)
@@ -234,9 +234,9 @@ namespace AdventureWorks.UILogic.ViewModels
         {
             if (e.PropertyName == "Quantity")
             {
-                OnPropertyChanged("FullPrice");
-                OnPropertyChanged("TotalDiscount");
-                OnPropertyChanged("TotalPrice");
+                RaisePropertyChanged("FullPrice");
+                RaisePropertyChanged("TotalDiscount");
+                RaisePropertyChanged("TotalPrice");
             }
         }
 
@@ -333,9 +333,9 @@ namespace AdventureWorks.UILogic.ViewModels
                 ShoppingCartItemViewModels.Remove(item);
 
                 CheckoutCommand.RaiseCanExecuteChanged();
-                OnPropertyChanged("FullPrice");
-                OnPropertyChanged("TotalDiscount");
-                OnPropertyChanged("TotalPrice");
+                RaisePropertyChanged("FullPrice");
+                RaisePropertyChanged("TotalDiscount");
+                RaisePropertyChanged("TotalPrice");
             }
             catch (Exception ex)
             {
