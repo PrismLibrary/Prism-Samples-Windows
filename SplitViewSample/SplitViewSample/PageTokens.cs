@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SplitViewSample
 {
-    public static class PageTokens
+    public enum PageTokens
     {
-        public const string MainPage = "Main";
-        public const string SecondPage = "Second";
+        Main,
+        Second
     }
 }
