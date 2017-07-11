@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Tests.Mocks;
 using AdventureWorks.UILogic.ViewModels;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventureWorks.UILogic.Tests.ViewModels
 {
@@ -12,7 +12,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
     public class SignOutFlyoutViewModelFixture
     {
         [TestMethod]
-        public async Task SignOut_CallsSignOutinAccountServiceAndRemovesSavedCredentials()
+        public void SignOut_CallsSignOutinAccountServiceAndRemovesSavedCredentials()
         {
             bool closeFlyoutCalled = false;
             bool accountServiceSignOutCalled = false;
@@ -38,7 +38,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
 
             var target = new SignOutFlyoutViewModel(accountService, navigationService) { CloseFlyout = () => closeFlyoutCalled = true };
 
-            await target.SignOutCommand.Execute();
+            target.SignOutCommand.Execute();
 
             Assert.IsTrue(accountServiceSignOutCalled);
             Assert.IsTrue(closeFlyoutCalled);

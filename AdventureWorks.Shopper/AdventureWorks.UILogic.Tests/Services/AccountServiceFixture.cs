@@ -3,7 +3,7 @@
 using System.Threading.Tasks;
 using AdventureWorks.UILogic.Services;
 using AdventureWorks.UILogic.Tests.Mocks;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AdventureWorks.UILogic.Models;
 using Windows.Security.Credentials;
 using System;

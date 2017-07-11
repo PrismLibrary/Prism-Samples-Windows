@@ -34,3 +34,5 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Api", Scope = "type", Target = "AdventureWorks.WebServices.WebApiConfig", Justification = "Api is a standard term.")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Scope = "member", Target = "AdventureWorks.WebServices.Controllers.AddressController.#GetAll()", Justification = "Mvc action methods cannot be properties.")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Scope = "member", Target = "AdventureWorks.WebServices.Controllers.PaymentMethodController.#GetAll()", Justification = "Mvc action methods cannot be properties.")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA2210:AssembliesShouldHaveValidStrongNames")]
+

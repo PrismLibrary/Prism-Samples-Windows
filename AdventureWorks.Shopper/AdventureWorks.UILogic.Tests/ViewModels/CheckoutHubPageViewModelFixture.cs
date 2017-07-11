@@ -7,14 +7,15 @@ using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Services;
 using AdventureWorks.UILogic.Tests.Mocks;
 using AdventureWorks.UILogic.ViewModels;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace AdventureWorks.UILogic.Tests.ViewModels
 {
     [TestClass]
     public class CheckoutHubPageViewModelFixture
     {
         [TestMethod]
-        public async Task ExecuteGoNextCommand_Validates3ViewModels()
+        public void ExecuteGoNextCommand_Validates3ViewModels()
         {
             bool shippingValidationExecuted = false;
             bool billingValidationExecuted = false;
@@ -34,7 +35,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
 
             var target = new CheckoutHubPageViewModel(new MockNavigationService(), null, null, new MockShoppingCartRepository(),
                                                         shippingAddressPageViewModel, billingAddressPageViewModel, paymentMethodPageViewModel, null, null);
-            await target.GoNextCommand.Execute();
+            target.GoNextCommand.Execute();
 
             Assert.IsTrue(shippingValidationExecuted);
             Assert.IsTrue(billingValidationExecuted);
@@ -42,7 +43,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
         }
 
         [TestMethod]
-        public async Task ExecuteGoNextCommand_ProcessesFormsAndNavigates_IfViewModelsAreValid()
+        public void ExecuteGoNextCommand_ProcessesFormsAndNavigates_IfViewModelsAreValid()
         {
             bool shippingInfoProcessed = false;
             bool billingInfoProcessed = false;
@@ -95,7 +96,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
 
             var target = new CheckoutHubPageViewModel(navigationService, accountService, orderRepository, shoppingCartRepository,
                                             shippingAddressPageViewModel, billingAddressPageViewModel, paymentMethodPageViewModel, null, null);
-            await target.GoNextCommand.Execute();
+            target.GoNextCommand.Execute();
 
             Assert.IsTrue(shippingInfoProcessed);
             Assert.IsTrue(billingInfoProcessed);
@@ -104,7 +105,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
         }
 
         [TestMethod]
-        public async Task ExecuteGoNextCommand_DoNothing_IfViewModelsAreInvalid()
+        public void ExecuteGoNextCommand_DoNothing_IfViewModelsAreInvalid()
         {
             bool formProcessStarted = false;
             var accountService = new MockAccountService()
@@ -126,7 +127,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
             shippingAddressPageViewModel.ValidateFormDelegate = () => false;
             billingAddressPageViewModel.ValidateFormDelegate = () => true;
             paymentMethodPageViewModel.ValidateFormDelegate = () => true;
-            await target.GoNextCommand.Execute();
+            target.GoNextCommand.Execute();
 
             Assert.IsFalse(formProcessStarted);
 
@@ -146,7 +147,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
         }
 
         [TestMethod]
-        public async Task SettingUseShippingAddressToTrue_CopiesValuesFromShippingAddressToBilling()
+        public void SettingUseShippingAddressToTrue_CopiesValuesFromShippingAddressToBilling()
         {
             var mockAddress = new Address()
                 {
@@ -215,7 +216,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
                                             shippingAddressPageViewModel, billingAddressPageViewModel, paymentMethodPageViewModel, null, null);
             target.UseSameAddressAsShipping = true;
 
-            await target.GoNextCommand.Execute();
+            target.GoNextCommand.Execute();
         }
 
         [TestMethod]

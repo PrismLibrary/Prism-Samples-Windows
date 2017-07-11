@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Tests.Mocks;
 using AdventureWorks.UILogic.ViewModels;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventureWorks.UILogic.Tests.ViewModels
 {
@@ -12,7 +12,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
     public class SignInFlyoutViewModelFixture
     {
         [TestMethod]
-        public async Task FiringSignInCommand_Persists_Credentials_And_Turns_Invisible()
+        public void FiringSignInCommand_Persists_Credentials_And_Turns_Invisible()
         {
             bool accountServiceSignInCalled = false;
             bool flyoutClosed = false;
@@ -37,14 +37,14 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
                     SaveCredentials = true
                 };
 
-            await target.SignInCommand.Execute();
+            target.SignInCommand.Execute();
 
             Assert.IsTrue(accountServiceSignInCalled);
             Assert.IsTrue(flyoutClosed);
         }
 
         [TestMethod]
-        public async Task FiringSignInCommand_WithNotRememberPassword_DoesNotSaveInCredentialStore()
+        public void FiringSignInCommand_WithNotRememberPassword_DoesNotSaveInCredentialStore()
         {
             var accountService = new MockAccountService()
                 {
@@ -61,7 +61,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
                     SaveCredentials = false
                 };
 
-            await target.SignInCommand.Execute();
+            target.SignInCommand.Execute();
         }
 
         [TestMethod]

@@ -33,7 +33,8 @@ namespace AdventureWorks.Shopper
         // Bootstrap: App singleton service declarations
         private TileUpdater _tileUpdater;
 
-        public IEventAggregator EventAggregator { get; set; }
+
+        public new IEventAggregator EventAggregator { get; set; }
         
         // Documentation on navigation between pages is at http://go.microsoft.com/fwlink/?LinkID=288815&clcid=0x409
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)

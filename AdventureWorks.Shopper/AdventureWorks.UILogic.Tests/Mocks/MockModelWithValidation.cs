@@ -40,6 +40,8 @@ namespace Microsoft.Practices.Prism.StoreApps.Tests.Mocks
             return Task.FromResult(ValidationResult.Success).Result;
         }
 
+#pragma warning disable CS0067 // The event is never used
         public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore
     }
 }
