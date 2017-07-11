@@ -32,7 +32,7 @@ namespace AdventureWorks.UILogic.ViewModels
             _alertMessageService = alertMessageService;
             _accountService = accountService;
 
-            SaveCommand = new DelegateCommand(async () => SaveAsync);
+            SaveCommand = new DelegateCommand(async () => await SaveAsync());
 
             Initialize();
         }

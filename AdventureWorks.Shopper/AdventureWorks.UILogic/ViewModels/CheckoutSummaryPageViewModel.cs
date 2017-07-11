@@ -65,7 +65,7 @@ namespace AdventureWorks.UILogic.ViewModels
             _alertMessageService = alertMessageService;
             _signInUserControlViewModel = signInUserControlViewModel;
 
-            SubmitCommand =  new DelegateCommand(async () => SubmitAsync, CanSubmit);
+            SubmitCommand =  new DelegateCommand(async () => await SubmitAsync(), CanSubmit);
 
             EditCheckoutDataCommand = new DelegateCommand(EditCheckoutData);
             SelectCheckoutDataCommand = new DelegateCommand(async () => await SelectCheckoutDataAsync());

@@ -38,7 +38,7 @@ namespace AdventureWorks.UILogic.ViewModels
             _accountService = accountService;
             _navigationService = navigationService;
 
-            SaveCommand = new DelegateCommand(async () => SaveAsync);
+            SaveCommand = new DelegateCommand(async () => await SaveAsync());
         }
 
         public IPaymentMethodUserControlViewModel PaymentMethodViewModel

@@ -33,7 +33,7 @@ namespace AdventureWorks.UILogic.ViewModels
             _alertMessageService = alertMessageService;
             _resourceLoader = resourceLoader;
 
-            AddToCartCommand = new DelegateCommand(async () => AddToCart);
+            AddToCartCommand = new DelegateCommand(async () => await AddToCart());
         }
 
         public string Title
