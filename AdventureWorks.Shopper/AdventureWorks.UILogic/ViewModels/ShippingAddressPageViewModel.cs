@@ -30,7 +30,7 @@ namespace AdventureWorks.UILogic.ViewModels
             _accountService = accountService;
             _navigationService = navigationService;
 
-            SaveCommand = DelegateCommand.FromAsyncHandler(SaveAsync);
+            SaveCommand = new DelegateCommand(async () => SaveAsync);
         }
 
         public IShippingAddressUserControlViewModel ShippingAddressViewModel

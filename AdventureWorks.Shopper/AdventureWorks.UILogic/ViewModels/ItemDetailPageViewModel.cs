@@ -39,8 +39,8 @@ namespace AdventureWorks.UILogic.ViewModels
             _resourceLoader = resourceLoader;
             _secondaryTileService = secondaryTileService;
 
-            PinProductCommand = DelegateCommand.FromAsyncHandler(PinProduct, () => SelectedProduct != null);
-            UnpinProductCommand = DelegateCommand.FromAsyncHandler(UnpinProduct, () => SelectedProduct != null);
+            PinProductCommand = new DelegateCommand(async () => PinProduct, () => SelectedProduct != null);
+            UnpinProductCommand = new DelegateCommand(async () => UnpinProduct, () => SelectedProduct != null);
         }
 
         public DelegateCommand PinProductCommand { get; private set; }
@@ -110,7 +110,7 @@ namespace AdventureWorks.UILogic.ViewModels
                 // AppBar.IsOpen property doesn't notify when the property is set.
                 // See http://go.microsoft.com/fwlink/?LinkID=288840
                 _isBottomAppBarOpened = value;
-                OnPropertyChanged("IsBottomAppBarOpened");
+                RaisePropertyChanged(nameof(IsBottomAppBarOpened));
             }
         }
 
