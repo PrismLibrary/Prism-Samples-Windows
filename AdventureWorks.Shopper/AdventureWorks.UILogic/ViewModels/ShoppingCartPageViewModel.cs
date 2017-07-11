@@ -50,7 +50,7 @@ namespace AdventureWorks.UILogic.ViewModels
             _checkoutDataRepository = checkoutDataRepository;
             _orderRepository = orderRepository;
 
-            CheckoutCommand = DelegateCommandHack.FromAsyncHandler(CheckoutAsync, CanCheckout);
+            CheckoutCommand = new DelegateCommand(async () => CheckoutAsync, CanCheckout);
             RemoveCommand = DelegateCommandHack<ShoppingCartItemViewModel>.FromAsyncHandler(Remove);
             IncrementCountCommand = DelegateCommandHack.FromAsyncHandler(IncrementCount);
             DecrementCountCommand = DelegateCommandHack.FromAsyncHandler(DecrementCount, CanDecrementCount);
@@ -160,7 +160,7 @@ namespace AdventureWorks.UILogic.ViewModels
                 // AppBar.IsOpen property doesn't notify when the property is set.
                 // See http://go.microsoft.com/fwlink/?LinkID=288840
                 _isBottomAppBarOpened = value;
-                RaisePropertyChanged("IsBottomAppBarOpened");
+                RaisePropertyChanged(nameof(IsBottomAppBarOpened));
             }
         }
 
@@ -214,9 +214,9 @@ namespace AdventureWorks.UILogic.ViewModels
                     }
 
                     CheckoutCommand.RaiseCanExecuteChanged();
-                    RaisePropertyChanged("FullPrice");
-                    RaisePropertyChanged("TotalDiscount");
-                    RaisePropertyChanged("TotalPrice");
+                    RaisePropertyChanged(nameof(FullPrice));
+                    RaisePropertyChanged(nameof(TotalDiscount));
+                    RaisePropertyChanged(nameof(TotalPrice));
                 }
             }
             catch (Exception ex)
@@ -234,9 +234,9 @@ namespace AdventureWorks.UILogic.ViewModels
         {
             if (e.PropertyName == "Quantity")
             {
-                RaisePropertyChanged("FullPrice");
-                RaisePropertyChanged("TotalDiscount");
-                RaisePropertyChanged("TotalPrice");
+                RaisePropertyChanged(nameof(FullPrice));
+                RaisePropertyChanged(nameof(TotalDiscount));
+                RaisePropertyChanged(nameof(TotalPrice));
             }
         }
 
@@ -333,9 +333,9 @@ namespace AdventureWorks.UILogic.ViewModels
                 ShoppingCartItemViewModels.Remove(item);
 
                 CheckoutCommand.RaiseCanExecuteChanged();
-                RaisePropertyChanged("FullPrice");
-                RaisePropertyChanged("TotalDiscount");
-                RaisePropertyChanged("TotalPrice");
+                RaisePropertyChanged(nameof(FullPrice));
+                RaisePropertyChanged(nameof(TotalDiscount));
+                RaisePropertyChanged(nameof(TotalPrice));
             }
             catch (Exception ex)
             {

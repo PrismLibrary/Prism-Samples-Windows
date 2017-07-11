@@ -65,7 +65,7 @@ namespace AdventureWorks.UILogic.ViewModels
             _alertMessageService = alertMessageService;
             _signInUserControlViewModel = signInUserControlViewModel;
 
-            SubmitCommand = DelegateCommandHack.FromAsyncHandler(SubmitAsync, CanSubmit);
+            SubmitCommand =  new DelegateCommand(async () => SubmitAsync, CanSubmit);
 
             EditCheckoutDataCommand = new DelegateCommand(EditCheckoutData);
             SelectCheckoutDataCommand = new DelegateCommand(async () => await SelectCheckoutDataAsync());
@@ -109,7 +109,7 @@ namespace AdventureWorks.UILogic.ViewModels
                 // AppBar.IsOpen property doesn't notify when the property is set.
                 // See http://go.microsoft.com/fwlink/?LinkID=288840
                 _isBottomAppBarOpened = value;
-                RaisePropertyChanged("IsBottomAppBarOpened");
+                RaisePropertyChanged(nameof(IsBottomAppBarOpened));
             }
         }
 

@@ -70,10 +70,10 @@ namespace AdventureWorks.UILogic.ViewModels
             {
                 if (SetProperty(ref _quantity, value))
                 {
-                    RaisePropertyChanged("FullPrice");
-                    RaisePropertyChanged("DiscountedPrice");
-                    RaisePropertyChanged("FullPriceDouble");
-                    RaisePropertyChanged("DiscountedPriceDouble");
+                    RaisePropertyChanged(nameof(FullPrice));
+                    RaisePropertyChanged(nameof(DiscountedPrice));
+                    RaisePropertyChanged(nameof(FullPriceDouble));
+                    RaisePropertyChanged(nameof(DiscountedPriceDouble));
                 }
             }
         }
