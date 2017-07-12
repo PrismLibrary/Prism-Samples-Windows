@@ -26,7 +26,7 @@ namespace AdventureWorks.UILogic.ViewModels
             _alertMessageService = alertMessageService;
             _resourceLoader = resourceLoader;
 
-            SignInCommand = new DelegateCommand(async () => SignInAsync, CanSignIn);
+            SignInCommand = new DelegateCommand(async () => await SignInAsync(), CanSignIn);
             GoBackCommand = new DelegateCommand(Close);
 
             if (_accountService.SignedInUser != null)

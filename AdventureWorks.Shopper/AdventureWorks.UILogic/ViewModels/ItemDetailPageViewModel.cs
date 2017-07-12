@@ -39,8 +39,8 @@ namespace AdventureWorks.UILogic.ViewModels
             _resourceLoader = resourceLoader;
             _secondaryTileService = secondaryTileService;
 
-            PinProductCommand = new DelegateCommand(async () => PinProduct, () => SelectedProduct != null);
-            UnpinProductCommand = new DelegateCommand(async () => UnpinProduct, () => SelectedProduct != null);
+            PinProductCommand = new DelegateCommand(async () => await PinProduct(), () => SelectedProduct != null);
+            UnpinProductCommand = new DelegateCommand(async () => await UnpinProduct(), () => SelectedProduct != null);
         }
 
         public DelegateCommand PinProductCommand { get; private set; }

@@ -11,8 +11,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace AdventureWorks.UILogic.ViewModels
-{
+namespace AdventureWorks.UILogic.ViewModels {
     public class BillingAddressPageViewModel : ViewModelBase
     {
         private readonly IBillingAddressUserControlViewModel _billingAddressViewModel;
@@ -30,7 +29,7 @@ namespace AdventureWorks.UILogic.ViewModels
             _accountService = accountService;
             _navigationService = navigationService;
 
-            SaveCommand = new DelegateCommand(async () => SaveAsync);
+            SaveCommand = new DelegateCommand(async () => await SaveAsync());
         }
 
         public IBillingAddressUserControlViewModel BillingAddressViewModel

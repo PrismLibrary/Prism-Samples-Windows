@@ -33,7 +33,7 @@ namespace AdventureWorks.UILogic.ViewModels
                 _lastSignedInUser = _accountService.SignedInUser;
             }
 
-            SignInCommand = new DelegateCommand(async () => SignInAsync, CanSignIn);
+            SignInCommand = new DelegateCommand(async () => await SignInAsync(), CanSignIn);
         }
 
         public string UserName

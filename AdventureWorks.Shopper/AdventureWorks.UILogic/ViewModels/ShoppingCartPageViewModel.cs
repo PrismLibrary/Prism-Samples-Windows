@@ -50,10 +50,10 @@ namespace AdventureWorks.UILogic.ViewModels
             _checkoutDataRepository = checkoutDataRepository;
             _orderRepository = orderRepository;
 
-            CheckoutCommand = new DelegateCommand(async () => CheckoutAsync, CanCheckout);
-            RemoveCommand = DelegateCommandHack<ShoppingCartItemViewModel>.FromAsyncHandler(Remove);
-            IncrementCountCommand = DelegateCommandHack.FromAsyncHandler(IncrementCount);
-            DecrementCountCommand = DelegateCommandHack.FromAsyncHandler(DecrementCount, CanDecrementCount);
+            CheckoutCommand = new DelegateCommand(async () => await CheckoutAsync(), CanCheckout);
+            RemoveCommand = new DelegateCommand<ShoppingCartItemViewModel>(async vm => await Remove(vm));
+            IncrementCountCommand = new DelegateCommand(async () => await IncrementCount());
+            DecrementCountCommand = new DelegateCommand(async () => await DecrementCount(), CanDecrementCount);
 
             // Subscribe to the ShoppingCartUpdated event
             if (eventAggregator != null)
