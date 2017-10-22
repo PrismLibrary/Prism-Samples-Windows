@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Tests.Mocks;
 using AdventureWorks.UILogic.ViewModels;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Windows.UI.Xaml.Navigation;
 using Prism.Windows.Navigation;
 
@@ -128,7 +128,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
             var shoppingCartRepository = new MockShoppingCartRepository();
             shoppingCartRepository.GetShoppingCartAsyncDelegate = () => Task.FromResult<ShoppingCart>(null);
             var eventAggregator = new MockEventAggregator();
-            bool signInUserControlOnNavigatedToCalled = false;
+            //bool signInUserControlOnNavigatedToCalled = false;
             var signInUserControlViewModel = new MockSignInUserControlViewModel() { OnNavigatedToDelegate = (a, b, c) => Task.Delay(0) };
             eventAggregator.GetEventDelegate = type => new MockShoppingCartUpdatedEvent();
             var target = new ShoppingCartPageViewModel(shoppingCartRepository, new MockNavigationService(),
@@ -142,7 +142,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
         }
 
         [TestMethod]
-        public async Task Checkout_WhenAnonymous_ShowsSignInFlyout()
+        public void Checkout_WhenAnonymous_ShowsSignInFlyout()
         {
             var modalCalled = false;
             var accountService = new MockAccountService
@@ -169,7 +169,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
                 };
             var target = new ShoppingCartPageViewModel(null, new MockNavigationService(), accountService, signInUserControlViewModel, null, null, checkoutDataRepository, null, eventAggregator);
 
-            await target.CheckoutCommand.Execute();
+            target.CheckoutCommand.Execute();
 
             Assert.IsTrue(modalCalled);
         }

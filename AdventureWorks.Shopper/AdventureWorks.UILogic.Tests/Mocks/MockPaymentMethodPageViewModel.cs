@@ -49,7 +49,9 @@ namespace AdventureWorks.UILogic.Tests.Mocks
             return ValidateFormDelegate();
         }
 
+#pragma warning disable CS0067 // The event is never used
         public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore
         public void SetLoadDefault(bool loadDefault)
         {
             throw new NotImplementedException();

@@ -2,7 +2,7 @@
 
 using AdventureWorks.UILogic.Tests.Mocks;
 using AdventureWorks.UILogic.ViewModels;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Prism.Windows.Navigation;
 using System;
 using System.Collections.Generic;

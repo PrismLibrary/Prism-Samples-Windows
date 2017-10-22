@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Tests.Mocks;
 using AdventureWorks.UILogic.ViewModels;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Windows.UI.Xaml.Navigation;
 using Prism.Windows.Navigation;
 

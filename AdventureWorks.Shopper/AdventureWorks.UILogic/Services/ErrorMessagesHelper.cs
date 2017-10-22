@@ -1,13 +1,13 @@
 using Prism.Windows.AppModel;
 using Windows.ApplicationModel.Resources;
 
-namespace AdventureWorks.UILogic.Services
-{
+namespace AdventureWorks.UILogic.Services {
     public static class ErrorMessagesHelper
     {
         static ErrorMessagesHelper()
         {
-            ResourceLoader = new ResourceLoaderAdapter(new ResourceLoader());    
+            // TODO: 'ResourceLoader.ResourceLoader(string)' is obsolete: 'ResourceLoader may be altered or unavailable for releases after Windows 8.1. Instead, use GetForCurrentView.
+            ResourceLoader = new ResourceLoaderAdapter(new ResourceLoader("AdventureWorks.UILogic/Resources"));
         }
 
         public static IResourceLoader ResourceLoader { get; set; }

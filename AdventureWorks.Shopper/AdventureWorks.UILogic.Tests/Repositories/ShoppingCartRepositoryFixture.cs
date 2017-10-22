@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Repositories;
 using AdventureWorks.UILogic.Tests.Mocks;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventureWorks.UILogic.Tests.Repositories
 {
@@ -109,7 +109,7 @@ namespace AdventureWorks.UILogic.Tests.Repositories
         public void ShoppingCartMerged_WhenAnonymousUserLogsIn()
         {
             bool mergeShoppingCartsCalled = false;
-            bool alertMessageServiceCalled = false;
+            //bool alertMessageServiceCalled = false;
             var anonymousCartItems = new List<ShoppingCartItem>
                                          {
                                              new ShoppingCartItem

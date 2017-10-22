@@ -10,8 +10,6 @@ namespace AdventureWorks.UILogic.Tests.Mocks
 {
     public class MockSessionStateService : ISessionStateService
     {
-        private List<Type> _knownTypes;
-
         public MockSessionStateService()
         {
             SessionState = new Dictionary<string, object>();
@@ -52,5 +50,7 @@ namespace AdventureWorks.UILogic.Tests.Mocks
         {
             throw new NotImplementedException();
         }
+
+        public Task<bool> CanRestoreSessionStateAsync() => throw new NotImplementedException();
     }
 }

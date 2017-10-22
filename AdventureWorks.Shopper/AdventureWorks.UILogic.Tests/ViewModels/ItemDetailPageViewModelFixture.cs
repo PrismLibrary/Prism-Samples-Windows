@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Tests.Mocks;
 using AdventureWorks.UILogic.ViewModels;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.Generic;
 using Prism.Windows.Navigation;
@@ -92,7 +92,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
         }
 
         [TestMethod]
-        public async Task PinToStart_FiresOnly_IfProductIsSelected_And_SecondaryTileDoesNotExist()
+        public void PinToStart_FiresOnly_IfProductIsSelected_And_SecondaryTileDoesNotExist()
         {
             bool fired = false;
             var secondaryTileService = new MockSecondaryTileService() { ActivateTileNotificationsDelegate = (a, b, c) => Task.Delay(0) };
@@ -111,25 +111,25 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
                     return Task.FromResult(true);
                 };
 
-            await target.PinProductCommand.Execute();
+            target.PinProductCommand.Execute();
             Assert.IsFalse(fired);
 
             // Case 2: Item selected but SecondaryTile exists --> should not be fired
             secondaryTileService.SecondaryTileExistsDelegate = (a) => true;
             target.SelectedProduct = new ProductViewModel(new Product() { ImageUri = new Uri("http://dummy-image-uri.com") });
             
-            await target.PinProductCommand.Execute();
+            target.PinProductCommand.Execute();
             Assert.IsFalse(fired);
 
             // Case 3: Item selected and SecondaryTile does not exist --> should be fired
             secondaryTileService.SecondaryTileExistsDelegate = (a) => false;
 
-            await target.PinProductCommand.Execute();
+            target.PinProductCommand.Execute();
             Assert.IsTrue(fired);
         }
 
         [TestMethod]
-        public async Task PinToStart_Changes_IsBottomAppBarSticky()
+        public void PinToStart_Changes_IsBottomAppBarSticky()
         {
             var secondaryTileService = new MockSecondaryTileService() 
             { 
@@ -154,14 +154,14 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
             // Check if the AppBar is Sticky before pinning
             Assert.IsFalse(target.IsBottomAppBarSticky);
 
-            await target.PinProductCommand.Execute();
+            target.PinProductCommand.Execute();
 
             // Check if the AppBar is Sticky after pinning
             Assert.IsFalse(target.IsBottomAppBarSticky);
         }
 
         [TestMethod]
-        public async Task PinToStart_ActivatesLiveTile()
+        public void PinToStart_ActivatesLiveTile()
         {
             var tileService = new MockSecondaryTileService()
             {
@@ -178,11 +178,11 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
             var target = new ItemDetailPageViewModel(null, null, null, null, tileService);
             target.SelectedProduct = new ProductViewModel(new Product() { ProductNumber = "MyProduct", ImageUri = new Uri("http://dummy-image-uri.com") });
 
-            await target.PinProductCommand.Execute();
+            target.PinProductCommand.Execute();
         }
 
         [TestMethod]
-        public async Task UnpinFromStart_FiresOnly_IfProductIsSelected_And_SecondaryTileDoesNotExist()
+        public void UnpinFromStart_FiresOnly_IfProductIsSelected_And_SecondaryTileDoesNotExist()
         {
             bool fired = false;
             var secondaryTileService = new MockSecondaryTileService();
@@ -196,25 +196,25 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
                 return Task.FromResult(true);
             };
 
-            await target.UnpinProductCommand.Execute();
+            target.UnpinProductCommand.Execute();
             Assert.IsFalse(fired);
 
             // Case 2: Item selected but SecondaryTile does not exist --> should not be fired
             secondaryTileService.SecondaryTileExistsDelegate = (a) => false;
             target.SelectedProduct = new ProductViewModel(new Product() { ImageUri = new Uri("http://dummy-image-uri.com") });
 
-            await target.UnpinProductCommand.Execute();
+            target.UnpinProductCommand.Execute();
             Assert.IsFalse(fired);
 
             // Case 3: Item selected and SecondaryTile exists --> should be fired
             secondaryTileService.SecondaryTileExistsDelegate = (a) => true;
 
-            await target.UnpinProductCommand.Execute();
+            target.UnpinProductCommand.Execute();
             Assert.IsTrue(fired);
         }
 
         [TestMethod]
-        public async Task UnpinFromStart_Changes_IsBottomAppBarSticky()
+        public void UnpinFromStart_Changes_IsBottomAppBarSticky()
         {
             var tileService = new MockSecondaryTileService() { SecondaryTileExistsDelegate = (a) => false };
             var target = new ItemDetailPageViewModel(null, null, null, null, tileService);
@@ -230,7 +230,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
             // Check if the AppBar is Sticky before unpinning
             Assert.IsFalse(target.IsBottomAppBarSticky);
 
-            await target.UnpinProductCommand.Execute();
+            target.UnpinProductCommand.Execute();
 
             // Check if the AppBar is Sticky after unpinning
             Assert.IsFalse(target.IsBottomAppBarSticky);

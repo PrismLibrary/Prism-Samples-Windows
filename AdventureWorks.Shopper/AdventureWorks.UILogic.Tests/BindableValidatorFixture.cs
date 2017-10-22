@@ -7,7 +7,7 @@ namespace AdventureWorks.UILogic.Tests
     using AdventureWorks.UILogic;
 
     using Microsoft.Practices.Prism.StoreApps.Tests.Mocks;
-    using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Prism.Windows.Validation;
 
     [TestClass]

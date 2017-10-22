@@ -7,7 +7,7 @@ using AdventureWorks.UILogic.Models;
 using AdventureWorks.UILogic.Services;
 using AdventureWorks.UILogic.Tests.Mocks;
 using AdventureWorks.UILogic.ViewModels;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Windows.UI.Xaml.Navigation;
 using Prism.Windows.Navigation;
 
@@ -17,7 +17,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
     public class CheckoutSummaryPageViewModelFixture
     {
         [TestMethod]
-        public async Task SubmitValidOrder_NavigatesToOrderConfirmation()
+        public void SubmitValidOrder_NavigatesToOrderConfirmation()
         {
             bool navigateCalled = false;
             bool clearCartCalled = false;
@@ -49,14 +49,14 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
                                                                     return Task.Delay(0);
                                                                 };
             var target = new CheckoutSummaryPageViewModel(navigationService, orderService, null, null, null, shoppingCartRepository, accountService, resourcesService, null, null);
-            await target.SubmitCommand.Execute();
+            target.SubmitCommand.Execute();
 
             Assert.IsTrue(navigateCalled);
             Assert.IsTrue(clearCartCalled);
         }
 
         [TestMethod]
-        public async Task SubmitInvalidOrder_CallsErrorDialog()
+        public void SubmitInvalidOrder_CallsErrorDialog()
         {
             bool successDialogCalled = false;
             bool errorDialogCalled = false;
@@ -90,14 +90,14 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
                 };
 
             var target = new CheckoutSummaryPageViewModel(navigationService, orderService, null, null, null, null, accountService, resourcesService, alertService, null);
-            await target.SubmitCommand.Execute();
+            target.SubmitCommand.Execute();
 
             Assert.IsFalse(successDialogCalled);
             Assert.IsTrue(errorDialogCalled);
         }
 
         [TestMethod]
-        public async Task Submit_WhenAnonymous_ShowsSignInControl()
+        public void Submit_WhenAnonymous_ShowsSignInControl()
         {
             bool showSignInCalled = false;
             var accountService = new MockAccountService()
@@ -109,7 +109,7 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
                                                      OpenDelegate = (a) => showSignInCalled = true
                                                  };
             var target = new CheckoutSummaryPageViewModel(new MockNavigationService(), null, null, null, null, null, accountService, null, null, signInUserControlViewModel);
-            await target.SubmitCommand.Execute();
+            target.SubmitCommand.Execute();
 
             Assert.IsTrue(showSignInCalled);
         }
@@ -210,15 +210,15 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
 
             requestedPageName = "ShippingAddress";
             target.SelectedCheckoutData = new CheckoutDataViewModel() { DataType = Constants.ShippingAddress };
-            target.EditCheckoutDataCommand.Execute().Wait();
+            target.EditCheckoutDataCommand.Execute();
 
             requestedPageName = "BillingAddress";
             target.SelectedCheckoutData = new CheckoutDataViewModel { DataType = Constants.BillingAddress };
-            target.EditCheckoutDataCommand.Execute().Wait();
+            target.EditCheckoutDataCommand.Execute();
 
             requestedPageName = "PaymentMethod";
             target.SelectedCheckoutData = new CheckoutDataViewModel { DataType = Constants.PaymentMethod };
-            target.EditCheckoutDataCommand.Execute().Wait();
+            target.EditCheckoutDataCommand.Execute();
         }
 
         [TestMethod]
@@ -238,15 +238,15 @@ namespace AdventureWorks.UILogic.Tests.ViewModels
 
             requestedPageName = "ShippingAddress";
             target.SelectedCheckoutData = new CheckoutDataViewModel() { DataType = Constants.ShippingAddress };
-            target.AddCheckoutDataCommand.Execute().Wait();
+            target.AddCheckoutDataCommand.Execute();
 
             requestedPageName = "BillingAddress";
             target.SelectedCheckoutData = new CheckoutDataViewModel() { DataType = Constants.BillingAddress };
-            target.AddCheckoutDataCommand.Execute().Wait();
+            target.AddCheckoutDataCommand.Execute();
 
             requestedPageName = "PaymentMethod";
             target.SelectedCheckoutData = new CheckoutDataViewModel() { DataType = Constants.PaymentMethod };
-            target.AddCheckoutDataCommand.Execute().Wait();
+            target.AddCheckoutDataCommand.Execute();
         }
 
         [TestMethod]
