@@ -88,7 +88,7 @@ namespace AdventureWorks.WebServices.Models
                 string stateName = address.State;
                 State state = new StateRepository().GetAll().FirstOrDefault(c => c.Name == stateName);
                 
-                if (Int32.TryParse(address.ZipCode.Substring(0, 3), out var zipCode))
+                if (!Int32.TryParse(address.ZipCode.Substring(0, 3), out var zipCode))
                 {
                     //Only supporting numeric zip codes.
                     return new ValidationResult(Resources.ErrorInvalidZipCodeInState);
